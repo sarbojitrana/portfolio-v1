@@ -93,7 +93,7 @@ func (s Site) Render() ([]byte, error) {
 		return nil, err
 	}
 	page.Projects.Published = len(page.Projects.Projects)
-	page.HeldBack = page.Projects.Scanned - countRepos(page.Projects)
+	page.HeldBack = page.Projects.Scanned - page.Projects.Published
 	if page.OpenSource.PageSize > 0 {
 		page.Pages = (len(page.OpenSource.PRs) + page.OpenSource.PageSize - 1) / page.OpenSource.PageSize
 	}
@@ -201,19 +201,6 @@ func (s Site) pageData(p Page) ([]byte, error) {
 	payload.RequestPath.RefillMs = p.Profile.RequestPath.RefillMs
 	payload.RequestPath.CacheTTLMs = p.Profile.RequestPath.CacheTTLMs
 	return json.Marshal(payload)
-}
-
-func countRepos(p model.Projects) int {
-	n := 0
-	for _, pr := range p.Projects {
-		n++
-		for _, l := range pr.Links {
-			if l.Label == "Client ↗" {
-				n++
-			}
-		}
-	}
-	return n
 }
 
 func comma(n int) string {

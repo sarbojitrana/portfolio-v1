@@ -5,58 +5,58 @@
   "role": "Backend Systems Engineer",
   "yearbox": {
     "left": "ECE",
-    "right": "B.Tech&nbsp;’27"
+    "right": "B.Tech\u0026nbsp;’27"
   },
-  "status": "Open to SDE / Backend Roles (IND)&nbsp;— Remote or On-site",
+  "status": "Open to SDE / Backend Roles (IND)\u0026nbsp;— Remote or On-site",
   "pill": "NIT—A",
   "overview": {
     "eyebrow": "General characteristics",
     "paragraphs": [
-      "I build the part nobody screenshots. Most of what I ship is a <b>Go service behind an Echo router</b>, with Postgres underneath and Redis in front of it for caching and background jobs — plus OpenSearch for when Postgres full-text stops being enough, and a fallback for when the index isn't there.",
-      "The other half is command-line tools. A port-drift watcher that reads <span class=\"mono\">/proc/net</span> directly, a Codeforces client that fits in a terminal, a PII redactor that unzips OOXML and scores its own precision and recall. No runtime dependencies, one binary, exit codes that mean something.",
-      "Most recently I spent a summer at the <b>National Informatics Centre</b>, building a configurable JSON parser service in Go that maps workflow event payloads onto Postgres schemas defined in a spreadsheet — so adding a service is a row, not a deploy."
+      "I build the part nobody screenshots. Most of what I ship is a \u003cb\u003eGo service behind an Echo router\u003c/b\u003e, with Postgres underneath and Redis in front of it for caching and background jobs — plus OpenSearch for when Postgres full-text stops being enough, and a fallback for when the index isn't there.",
+      "The other half is command-line tools. A port-drift watcher that reads \u003cspan class=\"mono\"\u003e/proc/net\u003c/span\u003e directly, a Codeforces client that fits in a terminal, a PII redactor that unzips OOXML and scores its own precision and recall. No runtime dependencies, one binary, exit codes that mean something.",
+      "Most recently I spent a summer at the \u003cb\u003eNational Informatics Centre\u003c/b\u003e, building a configurable JSON parser service in Go that maps workflow event payloads onto Postgres schemas defined in a spreadsheet — so adding a service is a row, not a deploy."
     ],
     "spec": [
       {
         "k": "Name",
-        "v": "Sarbojit Rana <span class=\"mono\">— sarbojitrana</span>"
+        "v": "Sarbojit Rana \u003cspan class=\"mono\"\u003e— sarbojitrana\u003c/span\u003e"
       },
       {
         "k": "Role",
-        "v": "Backend engineer — services &amp; CLI tooling"
+        "v": "Backend engineer — services \u0026amp; CLI tooling"
       },
       {
         "k": "Recent",
-        "v": "SWE Intern (Backend), National Informatics Centre<br><span class=\"mono\">May 2026 – Jun 2026 · completed · Go, Echo, PostgreSQL, Tern</span>"
+        "v": "SWE Intern (Backend), National Informatics Centre\u003cbr\u003e\u003cspan class=\"mono\"\u003eMay 2026 – Jun 2026 · completed · Go, Echo, PostgreSQL, Tern\u003c/span\u003e"
       },
       {
         "k": "Education",
-        "v": "NIT Agartala — B.Tech ECE, 2023–2027<br><span class=\"mono\">CGPA 8.03 / 10.0 (6th sem)</span>"
+        "v": "NIT Agartala — B.Tech ECE, 2023–2027\u003cbr\u003e\u003cspan class=\"mono\"\u003eCGPA 8.03 / 10.0 (6th sem)\u003c/span\u003e"
       },
       {
         "k": "Primary",
-        "v": "<span class=\"mono\">Go · PostgreSQL · Redis · Echo · pgx</span>"
+        "v": "\u003cspan class=\"mono\"\u003eGo · PostgreSQL · Redis · Echo · pgx\u003c/span\u003e"
       },
       {
         "k": "Secondary",
-        "v": "<span class=\"mono\">TypeScript · Next.js · Node · C++ · Python · Bash</span>"
+        "v": "\u003cspan class=\"mono\"\u003eTypeScript · Next.js · Node · C++ · Python · Bash\u003c/span\u003e"
       },
       {
         "k": "Infra",
-        "v": "<span class=\"mono\">OpenSearch · Asynq · S3/R2 · Tern · Docker · Linux</span>"
+        "v": "\u003cspan class=\"mono\"\u003eOpenSearch · Asynq · S3/R2 · Tern · Docker · Linux\u003c/span\u003e"
       },
       {
         "k": "Contests",
-        "v": "Codeforces max 1427 · LeetCode peak 1955<br><span class=\"mono\">Meta Hacker Cup 2025 R2 — global 1783</span>"
+        "v": "Codeforces max 1427 · LeetCode peak 1955\u003cbr\u003e\u003cspan class=\"mono\"\u003eMeta Hacker Cup 2025 R2 — global 1783\u003c/span\u003e"
       },
       {
         "k": "Status",
-        "v": "Available — new-grad &amp; internship, 2027 start"
+        "v": "Available — new-grad \u0026amp; internship, 2027 start"
       }
     ]
   },
   "request_path": {
-    "intro": "This is the middleware chain from <b>Nexus</b>, running for real in your browser — same order, same token bucket, same cache-aside. Send once and watch it walk. Send eight times fast and the bucket empties, and the rate limiter answers <span class=\"mono\">429</span> before your request ever meets the database.",
+    "intro": "This is the middleware chain from \u003cb\u003eNexus\u003c/b\u003e, running for real in your browser — same order, same token bucket, same cache-aside. Send once and watch it walk. Send eight times fast and the bucket empties, and the rate limiter answers \u003cspan class=\"mono\"\u003e429\u003c/span\u003e before your request ever meets the database.",
     "method": "GET",
     "path": "/v1/communities/golang/posts",
     "capacity": 5,
@@ -126,7 +126,7 @@
     },
     {
       "title": "21 Days of Code — 1st",
-      "text": "First place among 300+ entrants. Developers &amp; Coders Club, NIT Agartala."
+      "text": "First place among 300+ entrants. Developers \u0026amp; Coders Club, NIT Agartala."
     },
     {
       "title": "Game of Codes — winner",
@@ -139,11 +139,11 @@
     "member_since": "member since jun 2024",
     "stats": [
       {
-        "n": "49",
+        "n": "51",
         "l": "public repos"
       },
       {
-        "n": "28",
+        "n": "30",
         "l": "authored / 21 forked"
       },
       {
@@ -151,33 +151,33 @@
         "l": "merged pull requests"
       },
       {
-        "n": "14",
+        "n": "15",
         "l": "followers"
       }
     ],
     "languages": [
       [
         "Go",
-        8
+        10
       ],
       [
         "JavaScript",
         4
       ],
       [
-        "Python",
-        3
-      ],
-      [
         "C++",
         3
       ],
       [
-        "TypeScript",
-        2
+        "Python",
+        3
       ],
       [
         "Shell",
+        2
+      ],
+      [
+        "TypeScript",
         2
       ],
       [
@@ -185,10 +185,10 @@
         2
       ]
     ],
-    "authored_with_language": 24,
+    "authored_with_language": 26,
     "prose": [
       "Go is where the load-bearing work goes. The JavaScript and TypeScript are clients for Go services, the Python and C++ are tools and coursework, and the Bash is glue that earned its place.",
-      "The forks aren't clutter — each one is a working copy of an upstream project I've sent a fix to. They feed <a href=\"#s04\" style=\"text-decoration:none;border-bottom:1px solid var(--rule)\">section 04</a> rather than the project shelf."
+      "The forks aren't clutter — each one is a working copy of an upstream project I've sent a fix to. They feed \u003ca href=\"#s04\" style=\"text-decoration:none;border-bottom:1px solid var(--rule)\"\u003esection 04\u003c/a\u003e rather than the project shelf."
     ]
   },
   "contact": [
@@ -238,7 +238,7 @@
     "meta": "pdf · 1 page",
     "raw": "https://github.com/sarbojitrana/sarbojitrana/raw/main/assets/resume.pdf",
     "blob": "https://github.com/sarbojitrana/sarbojitrana/blob/main/assets/resume.pdf",
-    "note": "Served straight out of the repo. The button hands over whatever <span class=\"mono\">assets/resume.pdf</span> is on <span class=\"mono\">main</span> at the moment you click it — replace that file in <span class=\"mono\">github.com/sarbojitrana/sarbojitrana</span> and everyone downloading from here gets the new one. No re-deploy, no stale copy sitting in a bucket."
+    "note": "Served straight out of the repo. The button hands over whatever \u003cspan class=\"mono\"\u003eassets/resume.pdf\u003c/span\u003e is on \u003cspan class=\"mono\"\u003emain\u003c/span\u003e at the moment you click it — replace that file in \u003cspan class=\"mono\"\u003egithub.com/sarbojitrana/sarbojitrana\u003c/span\u003e and everyone downloading from here gets the new one. No re-deploy, no stale copy sitting in a bucket."
   },
   "pipeline": {
     "intro": "Nothing in section 03 is hand-maintained. A scheduled job reads every public repository, decides which ones are actually projects, writes the description you just read, and captures the preview from the live deployment. Push a new repo with a README and it appears here on the next run; push notes or a solutions dump and it never does.",
@@ -246,7 +246,7 @@
       {
         "n": "STEP 01",
         "title": "Collect",
-        "text": "GitHub API: repos, topics, languages, homepage, README, last push. Plus <span class=\"mono\">author:sarbojitrana is:pr is:merged</span> for section 04."
+        "text": "GitHub API: repos, topics, languages, homepage, README, last push. Plus \u003cspan class=\"mono\"\u003eauthor:sarbojitrana is:pr is:merged\u003c/span\u003e for section 04."
       },
       {
         "n": "STEP 02",
@@ -266,7 +266,7 @@
       {
         "n": "STEP 05",
         "title": "Commit",
-        "text": "Writes <span class=\"mono\">projects.json</span> and the previews, opens a PR against the site. Nothing publishes without a diff to look at."
+        "text": "Writes \u003cspan class=\"mono\"\u003eprojects.json\u003c/span\u003e and the previews, opens a PR against the site. Nothing publishes without a diff to look at."
       }
     ],
     "include": [
@@ -274,35 +274,13 @@
       "A README that explains what it does, beyond a title",
       "Source code — not notes, slides, or answers",
       "Solves a problem someone other than a grader had"
-    ],
-    "exclude": [
-      {
-        "count": "21",
-        "text": "Forks — routed to the open-source ledger instead"
-      },
-      {
-        "count": "8",
-        "text": "Tutorial builds and half-finished experiments"
-      },
-      {
-        "count": "3",
-        "text": "Course notes and coursework"
-      },
-      {
-        "count": "3",
-        "text": "Competitive-programming solution archives"
-      },
-      {
-        "count": "4",
-        "text": "Scaffolding, scripts, stub READMEs, profile config"
-      }
     ]
   },
+  "practice_note": "Three years of contests, mostly greedy, math and constructive. It shows up in the day job as cheap instincts about complexity, off-by-ones and the edge case nobody wrote a ticket for.",
   "footer": [
     "REV 1.0 · 2026-08-27",
-    "Archivo &amp; JetBrains Mono",
-    "Built in Go &amp; served static",
+    "Archivo \u0026amp; JetBrains Mono",
+    "Built in Go \u0026amp; served static",
     "END OF SHEET"
-  ],
-  "practice_note": "Three years of contests, mostly greedy, math and constructive. It shows up in the day job as cheap instincts about complexity, off-by-ones and the edge case nobody wrote a ticket for."
+  ]
 }

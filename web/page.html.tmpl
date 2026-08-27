@@ -324,7 +324,7 @@
       <div>
         <div class="lbl" style="margin-bottom:6px">Held back — {{.HeldBack}} repositories this run</div>
         <div class="rules" style="grid-template-columns:minmax(0,1fr)">
-          {{range .Profile.Pipeline.Exclude}}<div><span class="mark">{{.Count}}</span><span>{{.Text}}</span></div>
+          {{range .Projects.Held}}<div><span class="mark">{{.Count}}</span><span>{{.Text}}</span></div>
           {{end}}
         </div>
       </div>

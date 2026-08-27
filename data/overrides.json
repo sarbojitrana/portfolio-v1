@@ -155,5 +155,8 @@
       "name": "weather-cli",
       "kind": "CLI"
     }
-  }
+  },
+  "never_prs": [
+    "firstcontributions/first-contributions"
+  ]
 }

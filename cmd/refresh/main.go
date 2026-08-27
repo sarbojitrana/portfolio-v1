@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"strconv"
 	"strings"
 	"time"
 
@@ -113,6 +114,9 @@ func (r *runner) opensource() error {
 	out := model.OpenSource{MergedTotal: total, PageSize: 5, OwnRepoPRs: total - len(prs)}
 	repos := map[string]bool{}
 	for _, p := range prs {
+		if slices.Contains(r.overrides.NeverPRs, p.Repo) {
+			continue
+		}
 		repos[p.Repo] = true
 		out.PRs = append(out.PRs, model.PR{
 			Repo:   p.Repo,
@@ -162,11 +166,18 @@ func (r *runner) projects(shots, useAI bool) error {
 		known[p.Repo] = p
 	}
 
+	var forks, byHand, notPublished int
 	for _, repo := range repos {
-		if repo.Fork || slices.Contains(r.overrides.Never, repo.Name) {
+		if repo.Fork {
+			forks++
+			continue
+		}
+		if slices.Contains(r.overrides.Never, repo.Name) {
+			byHand++
 			continue
 		}
 		if _, merged := r.overrides.Merge[repo.Name]; merged {
+			byHand++
 			continue
 		}
 		pinned := slices.Contains(r.overrides.Always, repo.Name)
@@ -187,6 +198,7 @@ func (r *runner) projects(shots, useAI bool) error {
 			} else {
 				if !v.Publish && !pinned {
 					log.Printf("  %s: held back (%s)", repo.Name, v.Reason)
+					notPublished++
 					continue
 				}
 				p = model.Project{Repo: repo.Name, Name: v.Name, Kind: v.Kind, Blurb: v.Blurb, Facts: v.Facts}
@@ -194,6 +206,7 @@ func (r *runner) projects(shots, useAI bool) error {
 		}
 		if p.Repo == "" {
 			if !pinned {
+				notPublished++
 				continue
 			}
 			p = model.Project{Repo: repo.Name, Name: repo.Name, Kind: "TOOL"}
@@ -228,8 +241,89 @@ func (r *runner) projects(shots, useAI bool) error {
 	slices.SortStableFunc(out.Projects, func(a, b model.Project) int {
 		return rank(order, a.Repo) - rank(order, b.Repo)
 	})
+	if err := r.githubBlock(repos); err != nil {
+		return err
+	}
 	out.Published = len(out.Projects)
+	out.Held = []model.Excluded{
+		{Count: itoa(forks), Text: "Forks — routed to the open-source ledger instead"},
+		{Count: itoa(notPublished), Text: "Notes, coursework, solution archives, tutorial builds and scaffolding"},
+		{Count: itoa(byHand), Text: "Set aside by hand in overrides.json, or folded into another card"},
+	}
 	return r.write("projects.json", out)
+}
+
+// githubBlock refreshes the counts and language mix shown in section 06.
+func (r *runner) githubBlock(repos []ghapi.Repo) error {
+	b, err := os.ReadFile(r.path("profile.json"))
+	if err != nil {
+		return err
+	}
+	var p model.Profile
+	if err := json.Unmarshal(b, &p); err != nil {
+		return err
+	}
+	user, err := r.gh.User_()
+	if err != nil {
+		return err
+	}
+	_, mergedTotal, err := r.gh.MergedPRs()
+	if err != nil {
+		return err
+	}
+
+	authored, forks := 0, 0
+	byLang := map[string]int{}
+	for _, repo := range repos {
+		if repo.Fork {
+			forks++
+			continue
+		}
+		authored++
+		if repo.Language != "" {
+			byLang[repo.Language]++
+		}
+	}
+	langs := make([]string, 0, len(byLang))
+	for l := range byLang {
+		langs = append(langs, l)
+	}
+	slices.SortFunc(langs, func(a, b string) int {
+		if byLang[a] != byLang[b] {
+			return byLang[b] - byLang[a]
+		}
+		return strings.Compare(a, b)
+	})
+
+	withLanguage, other := 0, 0
+	p.Github.Languages = p.Github.Languages[:0]
+	for i, l := range langs {
+		withLanguage += byLang[l]
+		if i < 6 {
+			raw, _ := json.Marshal([]any{l, byLang[l]})
+			p.Github.Languages = append(p.Github.Languages, raw)
+			continue
+		}
+		other += byLang[l]
+	}
+	if other > 0 {
+		raw, _ := json.Marshal([]any{"Other", other})
+		p.Github.Languages = append(p.Github.Languages, raw)
+	}
+	p.Github.AuthoredWithLanguage = withLanguage
+	p.Github.MemberSince = "member since " + strings.ToLower(user.CreatedAt.Format("Jan 2006"))
+	p.Github.Stats = []model.Stat{
+		{N: itoa(user.PublicRepos), L: "public repos"},
+		{N: itoa(authored), L: fmt.Sprintf("authored / %d forked", forks)},
+		{N: itoa(mergedTotal), L: "merged pull requests"},
+		{N: itoa(user.Followers), L: "followers"},
+	}
+
+	out, err := json.MarshalIndent(p, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(r.path("profile.json"), append(out, '\n'), 0o644)
 }
 
 func applyOverride(p *model.Project, o model.OverrideEntry) {
@@ -256,6 +350,8 @@ func applyOverride(p *model.Project, o model.OverrideEntry) {
 		p.Preview = o.Preview
 	}
 }
+
+func itoa(n int) string { return strconv.Itoa(n) }
 
 func rank(order []string, repo string) int {
 	if i := slices.Index(order, repo); i >= 0 {

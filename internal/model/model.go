@@ -90,10 +90,9 @@ type Resume struct {
 }
 
 type Pipeline struct {
-	Intro   string     `json:"intro"`
-	Steps   []Step     `json:"steps"`
-	Include []string   `json:"include"`
-	Exclude []Excluded `json:"exclude"`
+	Intro   string   `json:"intro"`
+	Steps   []Step   `json:"steps"`
+	Include []string `json:"include"`
 }
 
 type Step struct {
@@ -108,10 +107,11 @@ type Excluded struct {
 }
 
 type Projects struct {
-	Scanned   int       `json:"scanned"`
-	Published int       `json:"published"`
-	Refreshed string    `json:"refreshed"`
-	Projects  []Project `json:"projects"`
+	Scanned   int        `json:"scanned"`
+	Published int        `json:"published"`
+	Refreshed string     `json:"refreshed"`
+	Held      []Excluded `json:"held"`
+	Projects  []Project  `json:"projects"`
 }
 
 type Project struct {
@@ -139,7 +139,6 @@ type Preview struct {
 
 type OpenSource struct {
 	MergedTotal   int  `json:"merged_total"`
-	OpenedTotal   int  `json:"opened_total"`
 	UpstreamRepos int  `json:"upstream_repos"`
 	OwnRepoPRs    int  `json:"own_repo_prs"`
 	PageSize      int  `json:"page_size"`
@@ -194,12 +193,13 @@ type Contributions struct {
 
 // Overrides pins what the classifier cannot decide on its own.
 type Overrides struct {
-	Always  []string                 `json:"always"`
-	Never   []string                 `json:"never"`
-	Wide    []string                 `json:"wide"`
-	Order   []string                 `json:"order"`
-	Merge   map[string]string        `json:"merge"`
-	Entries map[string]OverrideEntry `json:"entries"`
+	Always   []string                 `json:"always"`
+	Never    []string                 `json:"never"`
+	NeverPRs []string                 `json:"never_prs"`
+	Wide     []string                 `json:"wide"`
+	Order    []string                 `json:"order"`
+	Merge    map[string]string        `json:"merge"`
+	Entries  map[string]OverrideEntry `json:"entries"`
 }
 
 type OverrideEntry struct {

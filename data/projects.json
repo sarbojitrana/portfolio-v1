@@ -1,14 +1,28 @@
 {
-  "scanned": 49,
+  "scanned": 51,
   "published": 9,
   "refreshed": "2026-08-27",
+  "held": [
+    {
+      "count": "21",
+      "text": "Forks — routed to the open-source ledger instead"
+    },
+    {
+      "count": "11",
+      "text": "Notes, coursework, solution archives, tutorial builds and scaffolding"
+    },
+    {
+      "count": "10",
+      "text": "Set aside by hand in overrides.json, or folded into another card"
+    }
+  ],
   "projects": [
     {
       "repo": "nexus",
       "name": "Nexus",
       "kind": "SERVICE",
       "wide": true,
-      "blurb": "A community-first social platform. Posts live inside communities you choose, each governing itself with its own moderators, roles and report queue, and the feed blends what's trending with the people you actually follow. Go + Echo API and a Next.js client share Zod \u2192 ts-rest contracts across a Turborepo, so a broken response shape fails at compile time instead of in production. WebSocket chat carries presence and read receipts; OpenSearch handles full-text with a Postgres <span class=\"mono\">ILIKE</span> fallback for when the index isn't there; Asynq workers send the mail.",
+      "blurb": "A community-first social platform. Posts live inside communities you choose, each governing itself with its own moderators, roles and report queue, and the feed blends what's trending with the people you actually follow. Go + Echo API and a Next.js client share Zod → ts-rest contracts across a Turborepo, so a broken response shape fails at compile time instead of in production. WebSocket chat carries presence and read receipts; OpenSearch handles full-text with a Postgres \u003cspan class=\"mono\"\u003eILIKE\u003c/span\u003e fallback for when the index isn't there; Asynq workers send the mail.",
       "facts": [
         "60+ ENDPOINTS",
         "16 TABLES",
@@ -24,18 +38,18 @@
       ],
       "links": [
         {
-          "label": "Live \u2197",
+          "label": "Live ↗",
           "url": "https://nexus-web-beta-five.vercel.app"
         },
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/nexus"
         }
       ],
       "preview": {
         "file": "nexus.jpg",
-        "alt": "Nexus landing page \u2014 Every interest finds its node",
-        "stamp": "CAPTURED 2026-08-27 \u00b7 1280\u00d7800"
+        "alt": "Nexus landing page — Every interest finds its node",
+        "stamp": "CAPTURED 2026-08-27 · 1280×800"
       }
     },
     {
@@ -53,15 +67,15 @@
       ],
       "links": [
         {
-          "label": "Live \u2197",
+          "label": "Live ↗",
           "url": "https://codemetrics-rosy.vercel.app"
         },
         {
-          "label": "API \u2197",
+          "label": "API ↗",
           "url": "https://github.com/sarbojitrana/CodeMetrics_Backend"
         },
         {
-          "label": "Client \u2197",
+          "label": "Client ↗",
           "url": "https://github.com/sarbojitrana/CodeMetrics_Frontend"
         }
       ],
@@ -76,7 +90,7 @@
       "name": "portwarden",
       "kind": "CLI",
       "wide": false,
-      "blurb": "Watches this machine's listening TCP/UDP sockets and flags anything that drifts from an approved baseline \u2014 a new port, a baselined port whose owning process or user changed, or a service that quietly stopped listening. Reads <span class=\"mono\">/proc/net/{tcp,udp}</span> directly and resolves socket inodes to PIDs through <span class=\"mono\">/proc/[pid]/fd</span>, so it has no runtime dependencies at all.",
+      "blurb": "Watches this machine's listening TCP/UDP sockets and flags anything that drifts from an approved baseline — a new port, a baselined port whose owning process or user changed, or a service that quietly stopped listening. Reads \u003cspan class=\"mono\"\u003e/proc/net/{tcp,udp}\u003c/span\u003e directly and resolves socket inodes to PIDs through \u003cspan class=\"mono\"\u003e/proc/[pid]/fd\u003c/span\u003e, so it has no runtime dependencies at all.",
       "facts": [
         "GO",
         "ZERO DEPS",
@@ -85,18 +99,18 @@
       ],
       "links": [
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/portwarden"
         }
       ],
-      "terminal": "<span class=\"p\">$</span> portwarden diff --scope world\n\n<span class=\"hi\">NEW</span>       tcp/8080    node        uid 1000\n<span class=\"hi\">SQUATTED</span>  tcp/5432    postgres \u2192 pgbouncer\n<span class=\"hi\">MISSING</span>   tcp/9100    node_exporter\n\n3 findings \u00b7 11 listeners \u00b7 baseline 08-18"
+      "terminal": "\u003cspan class=\"p\"\u003e$\u003c/span\u003e portwarden diff --scope world\n\n\u003cspan class=\"hi\"\u003eNEW\u003c/span\u003e       tcp/8080    node        uid 1000\n\u003cspan class=\"hi\"\u003eSQUATTED\u003c/span\u003e  tcp/5432    postgres → pgbouncer\n\u003cspan class=\"hi\"\u003eMISSING\u003c/span\u003e   tcp/9100    node_exporter\n\n3 findings · 11 listeners · baseline 08-18"
     },
     {
       "repo": "pii-redactor",
       "name": "pii-redactor",
       "kind": "TOOL",
       "wide": false,
-      "blurb": "Redacts personal data out of <span class=\"mono\">.docx</span> files by unzipping the OOXML, parsing <span class=\"mono\">word/document.xml</span>, replacing values with deterministic fakes and repacking the archive. Hybrid detection \u2014 regex, a gazetteer and an address detector \u2014 chosen over NER and argued for in the README, with an eval command that scores its own precision, recall and F1 against ground truth.",
+      "blurb": "Redacts personal data out of \u003cspan class=\"mono\"\u003e.docx\u003c/span\u003e files by unzipping the OOXML, parsing \u003cspan class=\"mono\"\u003eword/document.xml\u003c/span\u003e, replacing values with deterministic fakes and repacking the archive. Hybrid detection — regex, a gazetteer and an address detector — chosen over NER and argued for in the README, with an eval command that scores its own precision, recall and F1 against ground truth.",
       "facts": [
         "GO 1.22",
         "STDLIB ONLY",
@@ -105,18 +119,18 @@
       ],
       "links": [
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/pii-redactor"
         }
       ],
-      "terminal": "<span class=\"p\">$</span> go run ./cmd/redact -in intake.docx\n\ndetect   regex 41 \u00b7 gazetteer 12 \u00b7 address 6\nmap      59 values \u2192 deterministic fakes\nwrite    word/document.xml repacked\n\n<span class=\"p\">$</span> go run ./cmd/eval\n<span class=\"hi\">precision 0.94   recall 0.89   f1 0.91</span>"
+      "terminal": "\u003cspan class=\"p\"\u003e$\u003c/span\u003e go run ./cmd/redact -in intake.docx\n\ndetect   regex 41 · gazetteer 12 · address 6\nmap      59 values → deterministic fakes\nwrite    word/document.xml repacked\n\n\u003cspan class=\"p\"\u003e$\u003c/span\u003e go run ./cmd/eval\n\u003cspan class=\"hi\"\u003eprecision 0.94   recall 0.89   f1 0.91\u003c/span\u003e"
     },
     {
       "repo": "codemetrics-cli",
       "name": "codemetrics-cli",
       "kind": "CLI",
       "wide": false,
-      "blurb": "The same Codeforces aggregation as the dashboard, without the browser. Looks up and compares profiles \u2014 rating, rank, problems solved, acceptance rate and a rating-wise problem histogram \u2014 straight in the terminal.",
+      "blurb": "The same Codeforces aggregation as the dashboard, without the browser. Looks up and compares profiles — rating, rank, problems solved, acceptance rate and a rating-wise problem histogram — straight in the terminal.",
       "facts": [
         "GO",
         "CODEFORCES API",
@@ -124,27 +138,27 @@
       ],
       "links": [
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/codemetrics-cli"
         }
       ],
-      "terminal": "<span class=\"p\">$</span> codemetrics Lord_Beerus\n\nLord_Beerus (Sarbojit Rana)\nRating       1262 (pupil)\nMax Rating   <span class=\"hi\">1427 (specialist)</span>\nSolved       653      Acceptance  54.7%\nContests      77      Since  2023-09-29\n\n  1400-1499  ######################### 77\n  1500-1599  ########################  74\n  1600-1699  ######################    69"
+      "terminal": "\u003cspan class=\"p\"\u003e$\u003c/span\u003e codemetrics Lord_Beerus\n\nLord_Beerus (Sarbojit Rana)\nRating       1262 (pupil)\nMax Rating   \u003cspan class=\"hi\"\u003e1427 (specialist)\u003c/span\u003e\nSolved       653      Acceptance  54.7%\nContests      77      Since  2023-09-29\n\n  1400-1499  ######################### 77\n  1500-1599  ########################  74\n  1600-1699  ######################    69"
     },
     {
       "repo": "arcshot",
       "name": "arcshot",
       "kind": "TOOL",
       "wide": false,
-      "blurb": "A screenshot and screen-recording chooser for Hyprland and other wlroots compositors \u2014 the GNOME capture flow on Wayland, without GNOME. The screen is live the moment it opens, so you can drag a region before deciding anything; the toolbar stays clickable over the live screen, recordings keep an elapsed timer, and it remembers your last choice so the common case is press-key, press-Enter.",
+      "blurb": "A screenshot and screen-recording chooser for Hyprland and other wlroots compositors — the GNOME capture flow on Wayland, without GNOME. The screen is live the moment it opens, so you can drag a region before deciding anything; the toolbar stays clickable over the live screen, recordings keep an elapsed timer, and it remembers your last choice so the common case is press-key, press-Enter.",
       "facts": [
         "PYTHON",
         "GTK4 / LIBADWAITA",
         "WAYLAND",
-        "GRIM \u00b7 SLURP \u00b7 WF-RECORDER"
+        "GRIM · SLURP · WF-RECORDER"
       ],
       "links": [
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/arcshot"
         }
       ],
@@ -159,7 +173,7 @@
       "name": "json-parser",
       "kind": "SERVICE",
       "wide": false,
-      "blurb": "A configurable parser that turns workflow event payloads into normalised Postgres rows from a spreadsheet-defined mapping \u2014 adding a service is a row in a sheet, not a code change. Repository abstractions over pgx, JSONB for the parts that stay unstructured, Tern migrations, Docker Compose for the whole thing. The pattern behind my work at NIC.",
+      "blurb": "A configurable parser that turns workflow event payloads into normalised Postgres rows from a spreadsheet-defined mapping — adding a service is a row in a sheet, not a code change. Repository abstractions over pgx, JSONB for the parts that stay unstructured, Tern migrations, Docker Compose for the whole thing. The pattern behind my work at NIC.",
       "facts": [
         "GO",
         "POSTGRES JSONB",
@@ -169,18 +183,18 @@
       ],
       "links": [
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/json-parser"
         }
       ],
-      "terminal": "<span class=\"p\">$</span> head -3 mappings.csv\nservice,json_path,column,type\nworkflow,$.event.id,event_id,uuid\nworkflow,$.payload,raw,jsonb\n\n<span class=\"p\">$</span> ./parser --service workflow event.json\n<span class=\"hi\">10 fields \u2192 workflow_events</span>  1 row \u00b7 jsonb 2.1 kB"
+      "terminal": "\u003cspan class=\"p\"\u003e$\u003c/span\u003e head -3 mappings.csv\nservice,json_path,column,type\nworkflow,$.event.id,event_id,uuid\nworkflow,$.payload,raw,jsonb\n\n\u003cspan class=\"p\"\u003e$\u003c/span\u003e ./parser --service workflow event.json\n\u003cspan class=\"hi\"\u003e10 fields → workflow_events\u003c/span\u003e  1 row · jsonb 2.1 kB"
     },
     {
       "repo": "resume-copy",
       "name": "resume-copy",
       "kind": "CLI",
       "wide": false,
-      "blurb": "Copies a master resume inside Google Drive, appends the company name to the filename, sets link-view sharing and prints the link \u2014 one command per application instead of six clicks. OAuth desktop flow, token cached locally, credentials never committed.",
+      "blurb": "Copies a master resume inside Google Drive, appends the company name to the filename, sets link-view sharing and prints the link — one command per application instead of six clicks. OAuth desktop flow, token cached locally, credentials never committed.",
       "facts": [
         "GO",
         "DRIVE API",
@@ -188,18 +202,18 @@
       ],
       "links": [
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/resume-copy"
         }
       ],
-      "terminal": "<span class=\"p\">$</span> resume-copy \"Acme Corp\"\n\ncopy    Resume.pdf \u2192 Resume_Acme Corp.pdf\nshare   anyone with the link \u00b7 view\n<span class=\"hi\">https://drive.google.com/file/d/1I8wl4w\u2026</span>"
+      "terminal": "\u003cspan class=\"p\"\u003e$\u003c/span\u003e resume-copy \"Acme Corp\"\n\ncopy    Resume.pdf → Resume_Acme Corp.pdf\nshare   anyone with the link · view\n\u003cspan class=\"hi\"\u003ehttps://drive.google.com/file/d/1I8wl4w…\u003c/span\u003e"
     },
     {
       "repo": "weather-cli",
       "name": "weather-cli",
       "kind": "CLI",
       "wide": false,
-      "blurb": "A minimal weather client over wttr.in, written as focused Bash modules behind a single entry point \u2014 one-shot for scripts, or an interactive shell that remembers the location you picked.",
+      "blurb": "A minimal weather client over wttr.in, written as focused Bash modules behind a single entry point — one-shot for scripts, or an interactive shell that remembers the location you picked.",
       "facts": [
         "BASH",
         "WTTR.IN",
@@ -207,11 +221,11 @@
       ],
       "links": [
         {
-          "label": "Source \u2197",
+          "label": "Source ↗",
           "url": "https://github.com/sarbojitrana/weather-cli"
         }
       ],
-      "terminal": "<span class=\"p\">&gt;</span> search Agartala\n1. Agartala, Tripura, India\n<span class=\"p\">&gt;</span> use 1\n\nCondition  : Patchy rain nearby\nTemp       : 28\u00b0C   Feels like  32\u00b0C\nHumidity   : 82%"
+      "terminal": "\u003cspan class=\"p\"\u003e\u0026gt;\u003c/span\u003e search Agartala\n1. Agartala, Tripura, India\n\u003cspan class=\"p\"\u003e\u0026gt;\u003c/span\u003e use 1\n\nCondition  : Patchy rain nearby\nTemp       : 28°C   Feels like  32°C\nHumidity   : 82%"
     }
   ]
 }

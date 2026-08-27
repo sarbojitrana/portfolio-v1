@@ -25,12 +25,12 @@ the database.
 
 ```
 cmd/build      data/ + web/ -> dist/
-cmd/refresh    GitHub + Codeforces + LeetCode + Claude -> data/
+cmd/refresh    GitHub + Codeforces + LeetCode + Gemini -> data/
 internal/
   ghapi        repos, merged pull requests, contribution calendar
   codeforces   profile, rating history, solved-by-rating buckets
   leetcode     GraphQL profile, contest history, acceptance rate
-  describe     the classify-and-write-the-blurb call
+  describe     the classify-and-write-the-blurb call (Gemini, free tier)
   capture      headless screenshots, with blank-page rejection
   render       html/template + the JSON blob the page's script reads
   model        the shapes of everything under data/
@@ -43,6 +43,10 @@ assets/        avatar and captured previews
 for hosting. `dist/artifact.html` inlines all three, images included, as one self-contained
 file.
 
+Everything here is the Go standard library — `go.mod` has no requires. The model call is
+plain `net/http` against the Gemini REST API, on the free tier; `GEMINI_MODEL` picks the
+model and defaults to `gemini-3.7-flash`.
+
 ## Running it
 
 ```bash
@@ -52,7 +56,7 @@ go run ./cmd/refresh -only coding     # one dataset
 go run ./cmd/refresh -shots=false -ai=false
 ```
 
-`refresh` needs `ANTHROPIC_API_KEY` for the blurbs, a headless Chrome or Firefox on `PATH`
+`refresh` needs `GEMINI_API_KEY` for the blurbs, a headless Chrome or Firefox on `PATH`
 for the previews, and optionally `GITHUB_TOKEN` to lift the API rate limit. Both flags can
 be turned off to refresh only the numbers.
 
@@ -79,7 +83,7 @@ thing a screenshot can't capture. It also suppresses the preview for that card.
 
 `deploy.yml` builds on every push to `main` and publishes `dist/` to GitHub Pages.
 `refresh.yml` runs nightly, and opens a pull request when the data changes — nothing
-reaches the site without a diff to look at. Add `ANTHROPIC_API_KEY` under repository
+reaches the site without a diff to look at. Add `GEMINI_API_KEY` under repository
 secrets before the first scheduled run.
 
 ## The résumé button

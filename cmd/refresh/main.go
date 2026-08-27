@@ -1,4 +1,4 @@
-// Command refresh rebuilds data/ from GitHub, Codeforces, LeetCode and Claude.
+// Command refresh rebuilds data/ from GitHub, Codeforces, LeetCode and Gemini.
 package main
 
 import (
@@ -29,7 +29,7 @@ func main() {
 	lcHandle := flag.String("leetcode", "sarbojit_007", "leetcode handle")
 	only := flag.String("only", "all", "all|projects|coding|opensource|contributions")
 	shots := flag.Bool("shots", true, "capture deployment previews")
-	ai := flag.Bool("ai", true, "ask Claude to classify and describe repositories")
+	ai := flag.Bool("ai", true, "ask Gemini to classify and describe repositories")
 	flag.Parse()
 
 	r := runner{root: *root, gh: ghapi.New(*user), user: *user}

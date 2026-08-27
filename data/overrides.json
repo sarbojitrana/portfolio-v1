@@ -1,0 +1,159 @@
+{
+  "always": [
+    "nexus",
+    "CodeMetrics_Backend"
+  ],
+  "never": [
+    "sarbojitrana",
+    "dbms-notes",
+    "operating-systems-notes",
+    "operating-system",
+    "Best_Dp_Problems",
+    "cp--solutions-codeforces-",
+    "CSES-Problem-Set-Solutions",
+    "go-boilerplate",
+    "service_setup_scripts"
+  ],
+  "wide": [
+    "nexus"
+  ],
+  "order": [
+    "nexus",
+    "CodeMetrics_Backend",
+    "portwarden",
+    "pii-redactor",
+    "codemetrics-cli",
+    "arcshot",
+    "json-parser",
+    "resume-copy",
+    "weather-cli"
+  ],
+  "merge": {
+    "CodeMetrics_Frontend": "CodeMetrics_Backend"
+  },
+  "entries": {
+    "nexus": {
+      "preview": {
+        "file": "nexus.jpg",
+        "alt": "Nexus landing page — Every interest finds its node",
+        "stamp": "CAPTURED 2026-08-27 · 1280×800"
+      },
+      "links": [
+        {
+          "label": "Live ↗",
+          "url": "https://nexus-web-beta-five.vercel.app"
+        },
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/nexus"
+        }
+      ],
+      "name": "Nexus",
+      "kind": "SERVICE"
+    },
+    "CodeMetrics_Backend": {
+      "preview": {
+        "file": "codemetrics.jpg",
+        "alt": "CodeMetrics dashboard landing page",
+        "stamp": "CAPTURED 2026-08-27"
+      },
+      "links": [
+        {
+          "label": "Live ↗",
+          "url": "https://codemetrics-rosy.vercel.app"
+        },
+        {
+          "label": "API ↗",
+          "url": "https://github.com/sarbojitrana/CodeMetrics_Backend"
+        },
+        {
+          "label": "Client ↗",
+          "url": "https://github.com/sarbojitrana/CodeMetrics_Frontend"
+        }
+      ],
+      "name": "CodeMetrics",
+      "kind": "SERVICE"
+    },
+    "portwarden": {
+      "terminal": "<span class=\"p\">$</span> portwarden diff --scope world\n\n<span class=\"hi\">NEW</span>       tcp/8080    node        uid 1000\n<span class=\"hi\">SQUATTED</span>  tcp/5432    postgres → pgbouncer\n<span class=\"hi\">MISSING</span>   tcp/9100    node_exporter\n\n3 findings · 11 listeners · baseline 08-18",
+      "links": [
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/portwarden"
+        }
+      ],
+      "name": "portwarden",
+      "kind": "CLI"
+    },
+    "pii-redactor": {
+      "terminal": "<span class=\"p\">$</span> go run ./cmd/redact -in intake.docx\n\ndetect   regex 41 · gazetteer 12 · address 6\nmap      59 values → deterministic fakes\nwrite    word/document.xml repacked\n\n<span class=\"p\">$</span> go run ./cmd/eval\n<span class=\"hi\">precision 0.94   recall 0.89   f1 0.91</span>",
+      "links": [
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/pii-redactor"
+        }
+      ],
+      "name": "pii-redactor",
+      "kind": "TOOL"
+    },
+    "codemetrics-cli": {
+      "terminal": "<span class=\"p\">$</span> codemetrics Lord_Beerus\n\nLord_Beerus (Sarbojit Rana)\nRating       1262 (pupil)\nMax Rating   <span class=\"hi\">1427 (specialist)</span>\nSolved       653      Acceptance  54.7%\nContests      77      Since  2023-09-29\n\n  1400-1499  ######################### 77\n  1500-1599  ########################  74\n  1600-1699  ######################    69",
+      "links": [
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/codemetrics-cli"
+        }
+      ],
+      "name": "codemetrics-cli",
+      "kind": "CLI"
+    },
+    "arcshot": {
+      "preview": {
+        "file": "arcshot.jpg",
+        "alt": "Arcshot capture toolbar overlaid on a live screen",
+        "stamp": "REPO PREVIEW"
+      },
+      "links": [
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/arcshot"
+        }
+      ],
+      "name": "arcshot",
+      "kind": "TOOL"
+    },
+    "json-parser": {
+      "terminal": "<span class=\"p\">$</span> head -3 mappings.csv\nservice,json_path,column,type\nworkflow,$.event.id,event_id,uuid\nworkflow,$.payload,raw,jsonb\n\n<span class=\"p\">$</span> ./parser --service workflow event.json\n<span class=\"hi\">10 fields → workflow_events</span>  1 row · jsonb 2.1 kB",
+      "links": [
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/json-parser"
+        }
+      ],
+      "name": "json-parser",
+      "kind": "SERVICE"
+    },
+    "resume-copy": {
+      "terminal": "<span class=\"p\">$</span> resume-copy \"Acme Corp\"\n\ncopy    Resume.pdf → Resume_Acme Corp.pdf\nshare   anyone with the link · view\n<span class=\"hi\">https://drive.google.com/file/d/1I8wl4w…</span>",
+      "links": [
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/resume-copy"
+        }
+      ],
+      "name": "resume-copy",
+      "kind": "CLI"
+    },
+    "weather-cli": {
+      "terminal": "<span class=\"p\">&gt;</span> search Agartala\n1. Agartala, Tripura, India\n<span class=\"p\">&gt;</span> use 1\n\nCondition  : Patchy rain nearby\nTemp       : 28°C   Feels like  32°C\nHumidity   : 82%",
+      "links": [
+        {
+          "label": "Source ↗",
+          "url": "https://github.com/sarbojitrana/weather-cli"
+        }
+      ],
+      "name": "weather-cli",
+      "kind": "CLI"
+    }
+  }
+}

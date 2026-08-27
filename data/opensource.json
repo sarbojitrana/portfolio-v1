@@ -1,0 +1,128 @@
+{
+  "merged_total": 23,
+  "opened_total": 34,
+  "upstream_repos": 9,
+  "own_repo_prs": 6,
+  "page_size": 5,
+  "prs": [
+    {
+      "repo": "infiniflow/ragflow",
+      "number": 18244,
+      "title": "Cross-KB document id collision in data source sync",
+      "diff": "+430 &minus;44",
+      "merged": "2026-08-25"
+    },
+    {
+      "repo": "KanishJebaMathewM/Truxify",
+      "number": 15127,
+      "title": "Make <span class=\"mono\">TaxSplitter.splitPayout</span> idempotent per payout id",
+      "diff": "+187 &minus;0",
+      "merged": "2026-08-18"
+    },
+    {
+      "repo": "KanishJebaMathewM/Truxify",
+      "number": 14053,
+      "title": "Authenticate the sentinel defensive pause and implement its missing endpoint",
+      "diff": "+435 &minus;8",
+      "merged": "2026-08-14"
+    },
+    {
+      "repo": "KanishJebaMathewM/Truxify",
+      "number": 13832,
+      "title": "Authenticate dispute-resolution webhooks and stop forwarding caller-supplied escrow recipients",
+      "diff": "+294 &minus;7",
+      "merged": "2026-08-14"
+    },
+    {
+      "repo": "KanishJebaMathewM/Truxify",
+      "number": 12480,
+      "title": "Bind dispute-resolution admin alerts to <span class=\"mono\">ADMIN_ALERT_EMAIL</span> instead of a placeholder recipient",
+      "diff": "+115 &minus;3",
+      "merged": "2026-08-14"
+    },
+    {
+      "repo": "infiniflow/ragflow",
+      "number": 18231,
+      "title": "Replace the pgsty/minio image with pgsty/silo",
+      "diff": "+5 &minus;5",
+      "merged": "2026-08-13"
+    },
+    {
+      "repo": "hiero-ledger/solo",
+      "number": 5741,
+      "title": "Coded error and capture path for corrupt or empty remote-config data",
+      "diff": "+137 &minus;12",
+      "merged": "2026-08-13"
+    },
+    {
+      "repo": "KanishJebaMathewM/Truxify",
+      "number": 12012,
+      "title": "Keep the settle action reachable for already-signed BOL contracts",
+      "diff": "+206 &minus;5",
+      "merged": "2026-08-13"
+    },
+    {
+      "repo": "google-gemini/gemini-cli",
+      "number": 28607,
+      "title": "Preserve <span class=\"mono\">functionCall</span> thoughtSignature when stripping thought parts &mdash; the v0.53.0 regression behind API 400 on tool calls",
+      "diff": "+93 &minus;1",
+      "merged": "2026-08-05"
+    },
+    {
+      "repo": "hiero-ledger/solo",
+      "number": 5396,
+      "title": "Reconcile printed versions with values-file overrides in one-shot mode",
+      "diff": "+115 &minus;0",
+      "merged": "2026-07-31"
+    },
+    {
+      "repo": "tusharg2210/asset-flow",
+      "number": 5,
+      "title": "Backend completion pass",
+      "diff": "+5 &minus;58",
+      "merged": "2026-07-12"
+    },
+    {
+      "repo": "tusharg2210/asset-flow",
+      "number": 3,
+      "title": "Complete backend &mdash; services, handlers and migrations",
+      "diff": "+4028 &minus;105",
+      "merged": "2026-07-12"
+    },
+    {
+      "repo": "tusharg2210/asset-flow",
+      "number": 1,
+      "title": "Initial backend setup",
+      "diff": "+643 &minus;0",
+      "merged": "2026-07-12"
+    },
+    {
+      "repo": "hiero-ledger/solo",
+      "number": 4180,
+      "title": "Exclude metrics-server and skip metallb in single-cluster tests",
+      "diff": "+11 &minus;6",
+      "merged": "2026-05-02"
+    },
+    {
+      "repo": "Jguer/yay",
+      "number": 2806,
+      "title": "Skip cache clean when no valid pacman cache directories exist",
+      "diff": "+18 &minus;3",
+      "merged": "2026-04-12"
+    },
+    {
+      "repo": "Jguer/yay",
+      "number": 2705,
+      "title": "Return exit status 1 when no packages are found &mdash; <span class=\"mono\">yay -S &lt;unknown&gt;</span> was exiting 0 and breaking scripts",
+      "diff": "+79 &minus;0",
+      "merged": "2025-12-21"
+    },
+    {
+      "repo": "keploy/writers-program",
+      "number": 44,
+      "title": "Mobile layout collision in the header and services list",
+      "diff": "+232 &minus;16",
+      "merged": "2025-12-03"
+    }
+  ]
+}

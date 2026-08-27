@@ -1,0 +1,59 @@
+name: refresh
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: which dataset to refresh
+        default: all
+        type: choice
+        options: [all, projects, coding, opensource, contributions]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+
+      - name: Install headless Chrome
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq chromium-browser || sudo snap install chromium
+
+      - name: Refresh data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: go run ./cmd/refresh -only "${{ inputs.only || 'all' }}"
+
+      - name: Rebuild
+        run: go run ./cmd/build
+
+      - name: Open a pull request if anything changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- data assets; then
+            echo "no changes"
+            exit 0
+          fi
+          branch="refresh/$(date -u +%Y-%m-%d)"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add data assets
+          git commit -m "Refresh portfolio data for $(date -u +%Y-%m-%d)"
+          git push --force origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Refresh portfolio data — $(date -u +%Y-%m-%d)" \
+            --body "Automated run of \`cmd/refresh\`. Review the diff under \`data/\` before merging." \
+            || gh pr edit "$branch" --title "Refresh portfolio data — $(date -u +%Y-%m-%d)"

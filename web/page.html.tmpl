@@ -1,0 +1,341 @@
+<title>{{.Profile.Name}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;700&display=swap">
+{{.StyleTag}}
+<div class="sheet">
+<span class="tick tl"></span><span class="tick tr"></span>
+
+<header class="wrap">
+  <div class="mast">
+    <h1 class="name ext">{{.Profile.First}}<br>{{.Profile.Last}}</h1>
+    <div class="mast-r">
+      <div class="mast-meta">
+        <span class="yearbox"><b>{{.Profile.Yearbox.Left}}</b><i>{{safe .Profile.Yearbox.Right}}</i></span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="dash" style="margin-top:clamp(14px,2vw,20px)">
+  <p class="roleline">{{.Profile.Role}}</p>
+
+  <div class="statusrow">
+    <div class="bar"><span class="ext" style="font-size:clamp(13px,2vw,21px)">{{safe .Profile.Status}}</span></div>
+    <div class="pill">{{.Profile.Pill}}</div>
+  </div>
+
+  <nav class="index">
+    <a href="#s01">01 / Overview</a>
+    <a href="#s02">02 / Request path</a>
+    <a href="#s03">03 / Projects</a>
+    <a href="#s04">04 / Open source</a>
+    <a href="#s05">05 / Coding profiles</a>
+    <a href="#s06">06 / GitHub</a>
+    <a href="#s07">07 / Contact</a>
+  </nav>
+</header>
+
+<section id="s01" class="wrap">
+  <div class="shead">
+    <span class="sec">SEC 01</span>
+    <h2>Overview</h2>
+    <span class="sright">{{.Profile.Overview.Eyebrow}}</span>
+  </div>
+  <hr class="dash">
+  <div class="sbody two">
+    <div class="prose">
+      {{range .Profile.Overview.Paragraphs}}<p>{{safe .}}</p>
+      {{end}}
+    </div>
+    <div>
+      <table class="spec">
+        {{range .Profile.Overview.Spec}}<tr><th>{{.K}}</th><td>{{safe .V}}</td></tr>
+        {{end}}
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="s02" class="wrap">
+  <div class="shead">
+    <span class="sec">SEC 02</span>
+    <h2>Request path</h2>
+    <span class="sright">Live model — press send</span>
+  </div>
+  <hr class="dash">
+  <div class="sbody">
+    <p class="prose" style="margin-bottom:16px"><span style="font-variation-settings:'wdth' 96,'wght' 420;font-size:15px;line-height:1.62;display:block;max-width:62ch">{{safe .Profile.RequestPath.Intro}}</span></p>
+
+    <div class="rig">
+      <div class="rig-main">
+        <div class="rig-head">
+          <span class="t">{{.Profile.RequestPath.Method}}</span>
+          <span class="t mono" style="font-variation-settings:normal;font-weight:400">{{.Profile.RequestPath.Path}}</span>
+          <span class="lbl" style="margin-left:auto" id="verdict">idle</span>
+        </div>
+        <div class="chain" id="chain">
+          {{range .Profile.RequestPath.Stages}}<div class="stage" data-k="{{.Key}}"><span class="led"></span><span class="nm">{{.Name}}<small>{{.Sub}}</small></span><span class="note"{{if eq .Key "rl"}} id="rl-note"{{else if eq .Key "cache"}} id="cache-note"{{end}}>{{.Note}}</span><span class="ms">—</span></div>
+          {{end}}
+        </div>
+      </div>
+      <div class="rig-side">
+        <div class="bucket">
+          <div class="lbl">Token bucket · cap {{.Profile.RequestPath.Capacity}} · +1 / 1.4s</div>
+          <div class="tokens" id="tokens"></div>
+          <div class="readout"><span id="bucket-n">{{.Profile.RequestPath.Capacity}} tokens</span><span id="bucket-r">refill 0.0s</span></div>
+        </div>
+        <div class="log" id="log"><div class="c2">// access log</div></div>
+      </div>
+      <div class="rig-foot">
+        <button class="act" id="send">Send request</button>
+        <button class="act ghost" id="spam">Spam ×8</button>
+        <button class="act ghost" id="reset">Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s03" class="wrap">
+  <div class="shead">
+    <span class="sec">SEC 03</span>
+    <h2>Projects</h2>
+    <span class="sright">{{.Projects.Published}} published / {{.Projects.Scanned}} scanned · auto-refreshed {{.Projects.Refreshed}}</span>
+  </div>
+  <hr class="dash">
+  <div class="sbody">
+    <div class="pgrid">
+      {{range $i, $p := .Projects.Projects}}
+      <article class="card{{if $p.Wide}} wide{{end}}">
+        <div class="card-top"><span class="idx">P-{{pad (inc $i)}}</span><h3>{{$p.Name}}</h3><span class="kind">{{$p.Kind}}</span></div>
+        {{with $p.Preview}}<div class="shot"><img src="{{asset .File}}" alt="{{.Alt}}"><span class="stamp">{{.Stamp}}</span></div>{{end}}
+        {{with $p.Terminal}}<div class="term"><pre>{{safe .}}</pre></div>{{end}}
+        <div class="card-body">
+          <p>{{safe $p.Blurb}}</p>
+          <div class="facts">{{range $p.Facts}}<span>{{.}}</span>{{end}}</div>
+          <div class="card-links">
+            {{range $p.Links}}<a href="{{.URL}}" target="_blank" rel="noopener">{{.Label}}</a>{{end}}
+          </div>
+        </div>
+      </article>
+      {{end}}
+    </div>
+  </div>
+</section>
+
+<section id="s04" class="wrap">
+  <div class="shead">
+    <span class="sec">SEC 04</span>
+    <h2>Open source</h2>
+    <span class="sright">merged pull requests · upstream only</span>
+  </div>
+  <hr class="dash">
+  <div class="sbody">
+    <p class="prose" style="margin-bottom:14px"><span style="display:block;max-width:62ch;font-variation-settings:'wdth' 96,'wght' 420">Bug fixes in other people's codebases, taken through review to merge. Every row below is a merged PR in a repository I don't own — pulled from the GitHub API, not typed by hand.</span></p>
+    <div class="scroll">
+      <table class="ledger">
+        <thead><tr><th>Repository</th><th>PR</th><th>What it fixed</th><th style="text-align:right">Diff</th><th style="text-align:right">Merged</th></tr></thead>
+        <tbody id="os-rows"></tbody>
+      </table>
+    </div>
+    <div class="pager">
+      <span class="read" id="os-read">offset 0 · limit {{.OpenSource.PageSize}} · {{len .OpenSource.PRs}} rows</span>
+      <span class="read" id="os-page">page 1 / {{.Pages}}</span>
+      <span class="pgbtns">
+        <button class="pg" id="os-prev" type="button">&larr; prev</button>
+        <button class="pg" id="os-next" type="button">next &rarr;</button>
+      </span>
+    </div>
+    <p class="lbl" style="margin-top:14px">{{len .OpenSource.PRs}} upstream · {{.OpenSource.MergedTotal}} merged in total · {{.OpenSource.OwnRepoPRs}} in repositories of my own</p>
+  </div>
+</section>
+
+<section id="s05" class="wrap">
+  <div class="shead">
+    <span class="sec">SEC 05</span>
+    <h2>Coding profiles</h2>
+    <span class="sright">read {{.Projects.Refreshed}} · figures are live, not rounded up</span>
+  </div>
+  <hr class="dash">
+  <div class="sbody">
+    <div class="eq">
+      {{with .Coding.Codeforces}}
+      <div class="panel">
+        <div class="panel-h"><span class="h">Codeforces</span><span class="u">/profile/{{.Handle}}</span></div>
+        <div class="panel-b">
+          <div class="bigstat">
+            <span class="v">{{.Peak}}</span>
+            <span class="k"><span class="lbl">peak rating</span><span class="rankword">{{.PeakRank}}</span></span>
+            <span class="k" style="margin-left:auto;text-align:right"><span class="lbl">current</span><span class="rankword">{{.Current}} · {{.CurrentRank}}</span></span>
+          </div>
+          <div>
+            <div class="lbl" style="margin-bottom:6px">{{.Contests}} rated contests · {{.First}} → {{.Last}}</div>
+            <svg class="spark" id="cf-spark" viewBox="0 0 600 150" preserveAspectRatio="none" role="img" aria-label="Codeforces rating history, peaking at {{.Peak}}"></svg>
+          </div>
+          <div class="mini">
+            <div><div class="n">{{.Solved}}</div><div class="l">solved</div></div>
+            <div><div class="n">{{.Acceptance}}%</div><div class="l">acceptance</div></div>
+            <div><div class="n">{{.Submissions}}</div><div class="l">submissions</div></div>
+          </div>
+          <div>
+            <div class="lbl" style="margin-bottom:7px">solved by problem rating</div>
+            <div class="hist" id="cf-hist"></div>
+          </div>
+          <div class="card-links" style="margin-top:auto"><a href="{{.URL}}" target="_blank" rel="noopener">Open profile ↗</a></div>
+        </div>
+      </div>
+      {{end}}
+      {{with .Coding.Leetcode}}
+      <div class="panel">
+        <div class="panel-h"><span class="h">LeetCode</span><span class="u">/u/{{.Handle}}</span></div>
+        <div class="panel-b">
+          <div class="bigstat">
+            <span class="v">{{.Peak}}</span>
+            <span class="k"><span class="lbl">peak rating</span><span class="rankword">{{.Badge}}</span></span>
+            <span class="k" style="margin-left:auto;text-align:right"><span class="lbl">current</span><span class="rankword">{{.Current}} · top {{.TopPercent}}%</span></span>
+          </div>
+          <div>
+            <div class="lbl" style="margin-bottom:6px">{{.Contests}} rated contests · {{.First}} → {{.Last}} · peak at {{lower .PeakContest}}</div>
+            <svg class="spark" id="lc-spark" viewBox="0 0 600 150" preserveAspectRatio="none" role="img" aria-label="LeetCode contest rating history, peaking at {{.Peak}}"></svg>
+          </div>
+          <div class="mini">
+            <div><div class="n">{{.Solved}}</div><div class="l">solved</div></div>
+            <div><div class="n">{{.Acceptance}}%</div><div class="l">acceptance</div></div>
+            <div><div class="n">{{comma .GlobalRank}}</div><div class="l">global rank</div></div>
+          </div>
+          <div>
+            <div class="lbl" style="margin-bottom:7px">{{.Solved}} problems accepted</div>
+            <div class="hist" id="lc-hist"></div>
+          </div>
+          <div>
+            <div class="lbl" style="margin-bottom:6px">what the practice is for</div>
+            <p style="margin:0;font-size:13px;line-height:1.55;font-variation-settings:'wdth' 92,'wght' 450">{{safe $.Profile.PracticeNote}}</p>
+          </div>
+          <div class="card-links" style="margin-top:auto"><a href="{{.URL}}" target="_blank" rel="noopener">Open profile ↗</a></div>
+        </div>
+      </div>
+      {{end}}
+    </div>
+
+    <div class="wins">
+      {{range .Profile.Achievements}}<div><div class="t">{{.Title}}</div><p>{{safe .Text}}</p></div>
+      {{end}}
+    </div>
+  </div>
+</section>
+
+<section id="s06" class="wrap">
+  <div class="shead">
+    <span class="sec">SEC 06</span>
+    <h2>GitHub</h2>
+    <span class="sright"><a href="{{.Profile.Github.URL}}" target="_blank" rel="noopener">github.com/{{.Profile.Github.Handle}} ↗</a></span>
+  </div>
+  <hr class="dash">
+  <div class="sbody">
+    <div class="ghstat">
+      <a class="id" href="{{.Profile.Github.URL}}" target="_blank" rel="noopener">
+        <img class="avatar" src="{{asset "avatar.jpg"}}" alt="{{.Profile.Name}}'s GitHub avatar">
+        <span>
+          <span class="n" style="font-size:17px">{{.Profile.Github.Handle}} ↗</span>
+          <span class="l">{{.Profile.Github.MemberSince}}</span>
+        </span>
+      </a>
+      {{range .Profile.Github.Stats}}<div><span class="n">{{.N}}</span><span class="l">{{.L}}</span></div>
+      {{end}}
+    </div>
+
+    <div style="margin-top:clamp(16px,2.4vw,26px)">
+      <div class="lbl" style="margin-bottom:7px">languages across {{.Profile.Github.AuthoredWithLanguage}} authored repositories</div>
+      <div class="langbar" id="langbar"></div>
+      <div class="langkey" id="langkey" style="margin-top:8px"></div>
+    </div>
+
+    <div style="margin-top:clamp(20px,3vw,34px)">
+      <div class="lbl" style="margin-bottom:9px">public contributions · last 12 months</div>
+      <div class="heatwrap">
+        <div class="heat-months" id="heat-months"></div>
+        <div class="heat" id="heat"></div>
+      </div>
+      <div class="heatfoot">
+        <span class="lbl">{{.Contributions.Total}} contributions · {{.Contributions.ActiveDays}} active days · longest streak {{.Contributions.LongestStreak}} · busiest day {{.Contributions.BusiestDay}}</span>
+        <span class="heat-legend">less <i style="opacity:.11"></i><i style="opacity:.34"></i><i style="opacity:.55"></i><i style="opacity:.77"></i><i></i> more</span>
+      </div>
+    </div>
+
+    <div class="eq" style="margin-top:clamp(20px,3vw,34px)">
+      {{range .Profile.Github.Prose}}<div class="prose"><p>{{safe .}}</p></div>
+      {{end}}
+    </div>
+  </div>
+</section>
+
+<section id="s07" class="wrap">
+  <div class="shead">
+    <span class="sec">SEC 07</span>
+    <h2>Contact</h2>
+    <span class="sright">replies within a day</span>
+  </div>
+  <hr class="dash">
+  <div class="sbody">
+    <div class="bar" style="margin-bottom:clamp(14px,2vw,20px)"><span class="ext" style="font-size:clamp(13px,2vw,20px)">Hiring, reviewing, or want a bug fixed — write to me</span></div>
+    <div class="contact">
+      {{range .Profile.Contact}}<a href="{{safeURL .URL}}"{{if hasPrefix .URL "http"}} target="_blank" rel="noopener"{{end}}><span class="k">{{.K}}</span><span class="v">{{.V}}</span></a>
+      {{end}}
+    </div>
+
+    {{with .Profile.Resume}}
+    <div class="resume">
+      <div class="r-l">
+        <div class="lbl">Résumé</div>
+        <div class="r-file">{{.File}}<span>{{.Meta}}</span></div>
+        <p>{{safe .Note}}</p>
+      </div>
+      <div class="r-side">
+        <a class="r-btn" href="{{.Raw}}">Download résumé ↓</a>
+        <a class="r-view" href="{{.Blob}}" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+    </div>
+    {{end}}
+  </div>
+</section>
+
+<section id="apxa" class="wrap">
+  <div class="shead">
+    <span class="sec">APX A</span>
+    <h2>How this page<br>updates itself</h2>
+    <span class="sright">projects shelf · unattended</span>
+  </div>
+  <hr class="dash">
+  <div class="sbody">
+    <p class="prose" style="margin-bottom:16px"><span style="display:block;max-width:66ch;font-variation-settings:'wdth' 96,'wght' 420">{{safe .Profile.Pipeline.Intro}}</span></p>
+
+    <div class="flow">
+      {{range .Profile.Pipeline.Steps}}<div class="step"><div class="n">{{.N}}</div><h4>{{.Title}}</h4><p>{{safe .Text}}</p></div>
+      {{end}}
+    </div>
+
+    <div class="eq" style="margin-top:clamp(16px,2.4vw,26px)">
+      <div>
+        <div class="lbl" style="margin-bottom:6px">Published when</div>
+        <div class="rules" style="grid-template-columns:minmax(0,1fr)">
+          {{range .Profile.Pipeline.Include}}<div><span class="mark">✓</span><span>{{.}}</span></div>
+          {{end}}
+        </div>
+      </div>
+      <div>
+        <div class="lbl" style="margin-bottom:6px">Held back — {{.HeldBack}} repositories this run</div>
+        <div class="rules" style="grid-template-columns:minmax(0,1fr)">
+          {{range .Profile.Pipeline.Exclude}}<div><span class="mark">{{.Count}}</span><span>{{.Text}}</span></div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  {{range $i, $f := .Profile.Footer}}<span class="lbl{{if eq $i 3}} grow{{end}}">{{safe $f}}</span>
+  {{end}}
+</footer>
+</div>
+<script id="page-data" type="application/json">{{.DataJSON}}</script>
+{{.ScriptTag}}

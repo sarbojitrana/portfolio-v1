@@ -1,0 +1,308 @@
+{
+  "name": "Sarbojit Rana",
+  "first": "Sarbojit",
+  "last": "Rana",
+  "role": "Backend Systems Engineer",
+  "yearbox": {
+    "left": "ECE",
+    "right": "B.Tech&nbsp;’27"
+  },
+  "status": "Open to SDE / Backend Roles (IND)&nbsp;— Remote or On-site",
+  "pill": "NIT—A",
+  "overview": {
+    "eyebrow": "General characteristics",
+    "paragraphs": [
+      "I build the part nobody screenshots. Most of what I ship is a <b>Go service behind an Echo router</b>, with Postgres underneath and Redis in front of it for caching and background jobs — plus OpenSearch for when Postgres full-text stops being enough, and a fallback for when the index isn't there.",
+      "The other half is command-line tools. A port-drift watcher that reads <span class=\"mono\">/proc/net</span> directly, a Codeforces client that fits in a terminal, a PII redactor that unzips OOXML and scores its own precision and recall. No runtime dependencies, one binary, exit codes that mean something.",
+      "Most recently I spent a summer at the <b>National Informatics Centre</b>, building a configurable JSON parser service in Go that maps workflow event payloads onto Postgres schemas defined in a spreadsheet — so adding a service is a row, not a deploy."
+    ],
+    "spec": [
+      {
+        "k": "Name",
+        "v": "Sarbojit Rana <span class=\"mono\">— sarbojitrana</span>"
+      },
+      {
+        "k": "Role",
+        "v": "Backend engineer — services &amp; CLI tooling"
+      },
+      {
+        "k": "Recent",
+        "v": "SWE Intern (Backend), National Informatics Centre<br><span class=\"mono\">May 2026 – Jun 2026 · completed · Go, Echo, PostgreSQL, Tern</span>"
+      },
+      {
+        "k": "Education",
+        "v": "NIT Agartala — B.Tech ECE, 2023–2027<br><span class=\"mono\">CGPA 8.03 / 10.0 (6th sem)</span>"
+      },
+      {
+        "k": "Primary",
+        "v": "<span class=\"mono\">Go · PostgreSQL · Redis · Echo · pgx</span>"
+      },
+      {
+        "k": "Secondary",
+        "v": "<span class=\"mono\">TypeScript · Next.js · Node · C++ · Python · Bash</span>"
+      },
+      {
+        "k": "Infra",
+        "v": "<span class=\"mono\">OpenSearch · Asynq · S3/R2 · Tern · Docker · Linux</span>"
+      },
+      {
+        "k": "Contests",
+        "v": "Codeforces max 1427 · LeetCode peak 1955<br><span class=\"mono\">Meta Hacker Cup 2025 R2 — global 1783</span>"
+      },
+      {
+        "k": "Status",
+        "v": "Available — new-grad &amp; internship, 2027 start"
+      }
+    ]
+  },
+  "request_path": {
+    "intro": "This is the middleware chain from <b>Nexus</b>, running for real in your browser — same order, same token bucket, same cache-aside. Send once and watch it walk. Send eight times fast and the bucket empties, and the rate limiter answers <span class=\"mono\">429</span> before your request ever meets the database.",
+    "method": "GET",
+    "path": "/v1/communities/golang/posts",
+    "capacity": 5,
+    "refill_ms": 1400,
+    "cache_ttl_ms": 9000,
+    "stages": [
+      {
+        "key": "edge",
+        "name": "Edge",
+        "sub": "echo router",
+        "note": "tls · h2"
+      },
+      {
+        "key": "rl",
+        "name": "Rate limit",
+        "sub": "redis token bucket",
+        "note": "5 / 5"
+      },
+      {
+        "key": "auth",
+        "name": "Auth",
+        "sub": "clerk jwt",
+        "note": "jwks cached"
+      },
+      {
+        "key": "rbac",
+        "name": "RBAC",
+        "sub": "community role",
+        "note": "member"
+      },
+      {
+        "key": "handler",
+        "name": "Handler",
+        "sub": "ts-rest contract",
+        "note": "zod ok"
+      },
+      {
+        "key": "service",
+        "name": "Service",
+        "sub": "feed rules",
+        "note": "cursor"
+      },
+      {
+        "key": "cache",
+        "name": "Cache",
+        "sub": "redis cache-aside",
+        "note": "cold"
+      },
+      {
+        "key": "repo",
+        "name": "Repository",
+        "sub": "pgx · no ORM",
+        "note": "prepared"
+      },
+      {
+        "key": "pg",
+        "name": "PostgreSQL",
+        "sub": "idx scan + limit 20",
+        "note": "16 tables"
+      }
+    ]
+  },
+  "achievements": [
+    {
+      "title": "Meta Hacker Cup 2025",
+      "text": "Global rank 1783, Round 2."
+    },
+    {
+      "title": "21 Days of Code — 1st",
+      "text": "First place among 300+ entrants. Developers &amp; Coders Club, NIT Agartala."
+    },
+    {
+      "title": "Game of Codes — winner",
+      "text": "Inter-college ICPC-style team contest, 100+ teams."
+    }
+  ],
+  "github": {
+    "handle": "sarbojitrana",
+    "url": "https://github.com/sarbojitrana",
+    "member_since": "member since jun 2024",
+    "stats": [
+      {
+        "n": "49",
+        "l": "public repos"
+      },
+      {
+        "n": "28",
+        "l": "authored / 21 forked"
+      },
+      {
+        "n": "23",
+        "l": "merged pull requests"
+      },
+      {
+        "n": "14",
+        "l": "followers"
+      }
+    ],
+    "languages": [
+      [
+        "Go",
+        8
+      ],
+      [
+        "JavaScript",
+        4
+      ],
+      [
+        "Python",
+        3
+      ],
+      [
+        "C++",
+        3
+      ],
+      [
+        "TypeScript",
+        2
+      ],
+      [
+        "Shell",
+        2
+      ],
+      [
+        "Other",
+        2
+      ]
+    ],
+    "authored_with_language": 24,
+    "prose": [
+      "Go is where the load-bearing work goes. The JavaScript and TypeScript are clients for Go services, the Python and C++ are tools and coursework, and the Bash is glue that earned its place.",
+      "The forks aren't clutter — each one is a working copy of an upstream project I've sent a fix to. They feed <a href=\"#s04\" style=\"text-decoration:none;border-bottom:1px solid var(--rule)\">section 04</a> rather than the project shelf."
+    ]
+  },
+  "contact": [
+    {
+      "k": "Email",
+      "v": "sarbojitrana47c@gmail.com",
+      "url": "mailto:sarbojitrana47c@gmail.com"
+    },
+    {
+      "k": "Phone",
+      "v": "+91 92631 49021",
+      "url": "tel:+919263149021"
+    },
+    {
+      "k": "LinkedIn",
+      "v": "sarbojit-rana ↗",
+      "url": "https://www.linkedin.com/in/sarbojit-rana"
+    },
+    {
+      "k": "GitHub",
+      "v": "sarbojitrana ↗",
+      "url": "https://github.com/sarbojitrana"
+    },
+    {
+      "k": "Codeforces",
+      "v": "Lord_Beerus ↗",
+      "url": "https://codeforces.com/profile/Lord_Beerus"
+    },
+    {
+      "k": "LeetCode",
+      "v": "sarbojit_007 ↗",
+      "url": "https://leetcode.com/u/sarbojit_007"
+    },
+    {
+      "k": "X",
+      "v": "@sarbojitrana ↗",
+      "url": "https://x.com/sarbojitrana"
+    },
+    {
+      "k": "Read the code",
+      "v": "nexus ↗",
+      "url": "https://github.com/sarbojitrana/nexus"
+    }
+  ],
+  "resume": {
+    "file": "assets/resume.pdf",
+    "meta": "pdf · 1 page",
+    "raw": "https://github.com/sarbojitrana/sarbojitrana/raw/main/assets/resume.pdf",
+    "blob": "https://github.com/sarbojitrana/sarbojitrana/blob/main/assets/resume.pdf",
+    "note": "Served straight out of the repo. The button hands over whatever <span class=\"mono\">assets/resume.pdf</span> is on <span class=\"mono\">main</span> at the moment you click it — replace that file in <span class=\"mono\">github.com/sarbojitrana/sarbojitrana</span> and everyone downloading from here gets the new one. No re-deploy, no stale copy sitting in a bucket."
+  },
+  "pipeline": {
+    "intro": "Nothing in section 03 is hand-maintained. A scheduled job reads every public repository, decides which ones are actually projects, writes the description you just read, and captures the preview from the live deployment. Push a new repo with a README and it appears here on the next run; push notes or a solutions dump and it never does.",
+    "steps": [
+      {
+        "n": "STEP 01",
+        "title": "Collect",
+        "text": "GitHub API: repos, topics, languages, homepage, README, last push. Plus <span class=\"mono\">author:sarbojitrana is:pr is:merged</span> for section 04."
+      },
+      {
+        "n": "STEP 02",
+        "title": "Classify",
+        "text": "A model reads each README and repo shape and answers one question: is this a piece of work, or a container for something else? Rules below."
+      },
+      {
+        "n": "STEP 03",
+        "title": "Describe",
+        "text": "The same model writes 2–4 sentences from the README and file tree — what it does and the one design decision worth knowing. No adjectives it can't source."
+      },
+      {
+        "n": "STEP 04",
+        "title": "Capture",
+        "text": "Headless browser shoots any live homepage at 1280×800, desaturates it, and drops the frame if it comes back blank or errored. CLIs get their recorded terminal output instead."
+      },
+      {
+        "n": "STEP 05",
+        "title": "Commit",
+        "text": "Writes <span class=\"mono\">projects.json</span> and the previews, opens a PR against the site. Nothing publishes without a diff to look at."
+      }
+    ],
+    "include": [
+      "Authored here, not forked",
+      "A README that explains what it does, beyond a title",
+      "Source code — not notes, slides, or answers",
+      "Solves a problem someone other than a grader had"
+    ],
+    "exclude": [
+      {
+        "count": "21",
+        "text": "Forks — routed to the open-source ledger instead"
+      },
+      {
+        "count": "8",
+        "text": "Tutorial builds and half-finished experiments"
+      },
+      {
+        "count": "3",
+        "text": "Course notes and coursework"
+      },
+      {
+        "count": "3",
+        "text": "Competitive-programming solution archives"
+      },
+      {
+        "count": "4",
+        "text": "Scaffolding, scripts, stub READMEs, profile config"
+      }
+    ]
+  },
+  "footer": [
+    "REV 1.0 · 2026-08-27",
+    "Archivo &amp; JetBrains Mono",
+    "Built in Go &amp; served static",
+    "END OF SHEET"
+  ],
+  "practice_note": "Three years of contests, mostly greedy, math and constructive. It shows up in the day job as cheap instincts about complexity, off-by-ones and the edge case nobody wrote a ticket for."
+}

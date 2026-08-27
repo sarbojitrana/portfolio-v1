@@ -236,9 +236,9 @@
   "resume": {
     "file": "assets/resume.pdf",
     "meta": "pdf · 1 page",
-    "raw": "https://github.com/sarbojitrana/sarbojitrana/raw/main/assets/resume.pdf",
-    "blob": "https://github.com/sarbojitrana/sarbojitrana/blob/main/assets/resume.pdf",
-    "note": "Served straight out of the repo. The button hands over whatever \u003cspan class=\"mono\"\u003eassets/resume.pdf\u003c/span\u003e is on \u003cspan class=\"mono\"\u003emain\u003c/span\u003e at the moment you click it — replace that file in \u003cspan class=\"mono\"\u003egithub.com/sarbojitrana/sarbojitrana\u003c/span\u003e and everyone downloading from here gets the new one. No re-deploy, no stale copy sitting in a bucket."
+    "raw": "https://raw.githubusercontent.com/sarbojitrana/portfolio-v1/main/assets/resume.pdf",
+    "blob": "https://github.com/sarbojitrana/portfolio-v1/blob/main/assets/resume.pdf",
+    "note": "Served straight out of the repo. The button hands over whatever <span class=\"mono\">assets/resume.pdf</span> is on <span class=\"mono\">main</span> at the moment you click it — replace that file in <span class=\"mono\">github.com/sarbojitrana/portfolio-v1</span> and everyone downloading from here gets the new one. No re-deploy, no stale copy sitting in a bucket."
   },
   "pipeline": {
     "intro": "Nothing in section 03 is hand-maintained. A scheduled job reads every public repository, decides which ones are actually projects, writes the description you just read, and captures the preview from the live deployment. Push a new repo with a README and it appears here on the next run; push notes or a solutions dump and it never does.",

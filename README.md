@@ -12,7 +12,9 @@ asks a model which ones are actually projects, writes the blurb from the README,
 screenshots any live deployment. Push a new repo with a README and it appears on the next
 run; push notes or a solutions dump and it never does. The open-source ledger and both
 competitive-programming panels come from the same job, straight out of the GitHub,
-Codeforces and LeetCode APIs.
+Codeforces and LeetCode APIs. The ledger carries every pull request I've opened in
+somebody else's repository — merged, open, or closed without landing — and the state
+filter above it decides which of those you're looking at.
 
 Section 02 is a working model of the middleware chain from
 [nexus](https://github.com/sarbojitrana/nexus) — same order, same token bucket, same
@@ -63,6 +65,8 @@ know. Keys:
 | --- | --- |
 | `always` | publish even if the classifier says no |
 | `never` | never publish, no matter what |
+| `never_prs` | repositories to keep out of the open-source ledger |
+| `limit` | how many cards the shelf shows; the rest fall off the end of `order` |
 | `wide` | render full width |
 | `order` | shelf order; anything unlisted sorts to the end |
 | `merge` | fold one repo into another (a frontend into its API) |

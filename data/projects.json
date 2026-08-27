@@ -1,6 +1,6 @@
 {
   "scanned": 51,
-  "published": 9,
+  "published": 8,
   "refreshed": "2026-08-27",
   "held": [
     {
@@ -12,7 +12,7 @@
       "text": "Notes, coursework, solution archives, tutorial builds and scaffolding"
     },
     {
-      "count": "10",
+      "count": "11",
       "text": "Set aside by hand in overrides.json, or folded into another card"
     }
   ],
@@ -207,25 +207,6 @@
         }
       ],
       "terminal": "\u003cspan class=\"p\"\u003e$\u003c/span\u003e resume-copy \"Acme Corp\"\n\ncopy    Resume.pdf → Resume_Acme Corp.pdf\nshare   anyone with the link · view\n\u003cspan class=\"hi\"\u003ehttps://drive.google.com/file/d/1I8wl4w…\u003c/span\u003e"
-    },
-    {
-      "repo": "weather-cli",
-      "name": "weather-cli",
-      "kind": "CLI",
-      "wide": false,
-      "blurb": "A minimal weather client over wttr.in, written as focused Bash modules behind a single entry point — one-shot for scripts, or an interactive shell that remembers the location you picked.",
-      "facts": [
-        "BASH",
-        "WTTR.IN",
-        "INTERACTIVE MODE"
-      ],
-      "links": [
-        {
-          "label": "Source ↗",
-          "url": "https://github.com/sarbojitrana/weather-cli"
-        }
-      ],
-      "terminal": "\u003cspan class=\"p\"\u003e\u0026gt;\u003c/span\u003e search Agartala\n1. Agartala, Tripura, India\n\u003cspan class=\"p\"\u003e\u0026gt;\u003c/span\u003e use 1\n\nCondition  : Patchy rain nearby\nTemp       : 28°C   Feels like  32°C\nHumidity   : 82%"
     }
   ]
 }

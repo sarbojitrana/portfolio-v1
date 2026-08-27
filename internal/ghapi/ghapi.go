@@ -52,7 +52,8 @@ type PullRequest struct {
 	Repo      string
 	Number    int
 	Title     string
-	MergedAt  time.Time
+	State     string
+	At        time.Time
 	Additions int
 	Deletions int
 }
@@ -116,17 +117,21 @@ func (c *Client) Readme(repo string) string {
 	return string(b)
 }
 
-// MergedPRs returns merged pull requests in repositories the user does not own.
-func (c *Client) MergedPRs() ([]PullRequest, int, error) {
-	q := url.QueryEscape(fmt.Sprintf("author:%s is:pr is:merged", c.User))
+// PullRequests returns every pull request the user opened in a repository they
+// do not own, tagged merged, open or closed.
+func (c *Client) PullRequests() ([]PullRequest, int, error) {
+	q := url.QueryEscape(fmt.Sprintf("author:%s is:pr", c.User))
 	var page struct {
 		Total int `json:"total_count"`
 		Items []struct {
-			Number      int    `json:"number"`
-			Title       string `json:"title"`
-			RepoURL     string `json:"repository_url"`
+			Number      int        `json:"number"`
+			Title       string     `json:"title"`
+			State       string     `json:"state"`
+			RepoURL     string     `json:"repository_url"`
+			CreatedAt   time.Time  `json:"created_at"`
+			ClosedAt    *time.Time `json:"closed_at"`
 			PullRequest struct {
-				MergedAt time.Time `json:"merged_at"`
+				MergedAt *time.Time `json:"merged_at"`
 			} `json:"pull_request"`
 		} `json:"items"`
 	}
@@ -139,7 +144,16 @@ func (c *Client) MergedPRs() ([]PullRequest, int, error) {
 		if strings.HasPrefix(repo, c.User+"/") {
 			continue
 		}
-		pr := PullRequest{Repo: repo, Number: it.Number, Title: it.Title, MergedAt: it.PullRequest.MergedAt}
+		pr := PullRequest{Repo: repo, Number: it.Number, Title: it.Title, State: "open", At: it.CreatedAt}
+		switch {
+		case it.PullRequest.MergedAt != nil:
+			pr.State, pr.At = "merged", *it.PullRequest.MergedAt
+		case it.State == "closed":
+			pr.State = "closed"
+			if it.ClosedAt != nil {
+				pr.At = *it.ClosedAt
+			}
+		}
 		var detail struct {
 			Additions int `json:"additions"`
 			Deletions int `json:"deletions"`
@@ -149,7 +163,7 @@ func (c *Client) MergedPRs() ([]PullRequest, int, error) {
 		}
 		out = append(out, pr)
 	}
-	sort.Slice(out, func(i, j int) bool { return out[i].MergedAt.After(out[j].MergedAt) })
+	sort.Slice(out, func(i, j int) bool { return out[i].At.After(out[j].At) })
 	return out, page.Total, nil
 }
 

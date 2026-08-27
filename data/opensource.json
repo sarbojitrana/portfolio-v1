@@ -1,127 +1,234 @@
 {
-  "merged_total": 23,
-  "upstream_repos": 7,
+  "opened_total": 34,
+  "merged_total": 17,
+  "upstream_repos": 14,
   "own_repo_prs": 5,
   "page_size": 5,
+  "default_state": "merged",
   "prs": [
     {
       "repo": "infiniflow/ragflow",
       "number": 18244,
       "title": "Cross-KB document id collision in data source sync",
       "diff": "+430 \u0026minus;44",
-      "merged": "2026-08-25"
+      "state": "merged",
+      "date": "2026-08-25"
     },
     {
       "repo": "KanishJebaMathewM/Truxify",
       "number": 15127,
       "title": "Make \u003cspan class=\"mono\"\u003eTaxSplitter.splitPayout\u003c/span\u003e idempotent per payout id",
       "diff": "+187 \u0026minus;0",
-      "merged": "2026-08-18"
+      "state": "merged",
+      "date": "2026-08-18"
+    },
+    {
+      "repo": "google-gemini/gemini-cli",
+      "number": 28666,
+      "title": "Validate every workspace directory GlobTool.execute() will search",
+      "diff": "+225 \u0026minus;22",
+      "state": "closed",
+      "date": "2026-08-18"
+    },
+    {
+      "repo": "google-gemini/gemini-cli",
+      "number": 28665,
+      "title": "Fix(vscode-ide-companion): comma operator in activate() leaked two Disposables",
+      "diff": "+48 \u0026minus;9",
+      "state": "closed",
+      "date": "2026-08-18"
+    },
+    {
+      "repo": "Jguer/yay",
+      "number": 2798,
+      "title": "Fix/debug package base detection #2764",
+      "diff": "+30 \u0026minus;6",
+      "state": "closed",
+      "date": "2026-08-16"
     },
     {
       "repo": "KanishJebaMathewM/Truxify",
       "number": 14053,
       "title": "Authenticate the sentinel defensive pause and implement its missing endpoint",
       "diff": "+435 \u0026minus;8",
-      "merged": "2026-08-14"
+      "state": "merged",
+      "date": "2026-08-14"
     },
     {
       "repo": "KanishJebaMathewM/Truxify",
       "number": 13832,
       "title": "Authenticate dispute-resolution webhooks and stop forwarding caller-supplied escrow recipients",
       "diff": "+294 \u0026minus;7",
-      "merged": "2026-08-14"
+      "state": "merged",
+      "date": "2026-08-14"
+    },
+    {
+      "repo": "KanishJebaMathewM/Truxify",
+      "number": 12532,
+      "title": "Decode sync_events rows defensively instead of casting",
+      "diff": "+229 \u0026minus;21",
+      "state": "closed",
+      "date": "2026-08-14"
     },
     {
       "repo": "KanishJebaMathewM/Truxify",
       "number": 12480,
       "title": "Bind dispute-resolution admin alerts to \u003cspan class=\"mono\"\u003eADMIN_ALERT_EMAIL\u003c/span\u003e instead of a placeholder recipient",
       "diff": "+115 \u0026minus;3",
-      "merged": "2026-08-14"
+      "state": "merged",
+      "date": "2026-08-14"
     },
     {
       "repo": "KanishJebaMathewM/Truxify",
       "number": 12012,
       "title": "Keep the settle action reachable for already-signed BOL contracts",
       "diff": "+206 \u0026minus;5",
-      "merged": "2026-08-13"
+      "state": "merged",
+      "date": "2026-08-13"
     },
     {
       "repo": "infiniflow/ragflow",
       "number": 18231,
       "title": "Replace the pgsty/minio image with pgsty/silo",
       "diff": "+5 \u0026minus;5",
-      "merged": "2026-08-13"
+      "state": "merged",
+      "date": "2026-08-13"
     },
     {
       "repo": "hiero-ledger/solo",
       "number": 5741,
       "title": "Coded error and capture path for corrupt or empty remote-config data",
       "diff": "+137 \u0026minus;12",
-      "merged": "2026-08-13"
+      "state": "merged",
+      "date": "2026-08-13"
+    },
+    {
+      "repo": "hiero-ledger/hiero-sdk-js",
+      "number": 4316,
+      "title": "Add unit tests for TokenRelationship",
+      "diff": "+385 \u0026minus;0",
+      "state": "closed",
+      "date": "2026-08-12"
+    },
+    {
+      "repo": "cloudflare/cloudflare-os",
+      "number": 60,
+      "title": "Report malformed percent-escapes in Google resource URLs instead of throwing URIError",
+      "diff": "+18 \u0026minus;4",
+      "state": "closed",
+      "date": "2026-08-07"
     },
     {
       "repo": "google-gemini/gemini-cli",
       "number": 28607,
       "title": "Preserve \u003cspan class=\"mono\"\u003efunctionCall\u003c/span\u003e thoughtSignature when stripping thought parts \u0026mdash; the v0.53.0 regression behind API 400 on tool calls",
       "diff": "+93 \u0026minus;1",
-      "merged": "2026-08-05"
+      "state": "merged",
+      "date": "2026-08-05"
+    },
+    {
+      "repo": "python/mypy",
+      "number": 21798,
+      "title": "Make gzip.GzipFile inherit IO[bytes] to match BZ2File/LZMAFile",
+      "diff": "+12 \u0026minus;3",
+      "state": "closed",
+      "date": "2026-08-01"
+    },
+    {
+      "repo": "grafana/grafana",
+      "number": 129277,
+      "title": "InfluxDB Flux: stop logging full QueryDataRequest (cleartext token) at debug",
+      "diff": "+1 \u0026minus;1",
+      "state": "closed",
+      "date": "2026-07-31"
     },
     {
       "repo": "hiero-ledger/solo",
       "number": 5396,
       "title": "Reconcile printed versions with values-file overrides in one-shot mode",
       "diff": "+115 \u0026minus;0",
-      "merged": "2026-07-31"
+      "state": "merged",
+      "date": "2026-07-31"
+    },
+    {
+      "repo": "appwrite/appwrite",
+      "number": 13018,
+      "title": "Document executor container_name/hostname requirement",
+      "diff": "+9 \u0026minus;0",
+      "state": "open",
+      "date": "2026-07-27"
+    },
+    {
+      "repo": "mattermost/mattermost",
+      "number": 37671,
+      "title": "Render emoji picker with individual PNGs instead of the sprite sheet",
+      "diff": "+114 \u0026minus;134",
+      "state": "open",
+      "date": "2026-07-26"
     },
     {
       "repo": "tusharg2210/asset-flow",
       "number": 5,
       "title": "Backend completion pass",
       "diff": "+5 \u0026minus;58",
-      "merged": "2026-07-12"
+      "state": "merged",
+      "date": "2026-07-12"
     },
     {
       "repo": "tusharg2210/asset-flow",
       "number": 3,
       "title": "Complete backend \u0026mdash; services, handlers and migrations",
       "diff": "+4028 \u0026minus;105",
-      "merged": "2026-07-12"
+      "state": "merged",
+      "date": "2026-07-12"
     },
     {
       "repo": "tusharg2210/asset-flow",
       "number": 1,
       "title": "Initial backend setup",
       "diff": "+643 \u0026minus;0",
-      "merged": "2026-07-12"
+      "state": "merged",
+      "date": "2026-07-12"
     },
     {
       "repo": "hiero-ledger/solo",
       "number": 4180,
       "title": "Exclude metrics-server and skip metallb in single-cluster tests",
       "diff": "+11 \u0026minus;6",
-      "merged": "2026-05-02"
+      "state": "merged",
+      "date": "2026-05-02"
     },
     {
       "repo": "Jguer/yay",
       "number": 2806,
       "title": "Skip cache clean when no valid pacman cache directories exist",
       "diff": "+18 \u0026minus;3",
-      "merged": "2026-04-12"
+      "state": "merged",
+      "date": "2026-04-12"
+    },
+    {
+      "repo": "obra/superpowers",
+      "number": 784,
+      "title": "Resolve ESM/CommonJS conflict in brainstorming server  #774",
+      "diff": "+4 \u0026minus;4",
+      "state": "closed",
+      "date": "2026-03-17"
     },
     {
       "repo": "Jguer/yay",
       "number": 2705,
       "title": "Return exit status 1 when no packages are found \u0026mdash; \u003cspan class=\"mono\"\u003eyay -S \u0026lt;unknown\u0026gt;\u003c/span\u003e was exiting 0 and breaking scripts",
       "diff": "+79 \u0026minus;0",
-      "merged": "2025-12-21"
+      "state": "merged",
+      "date": "2025-12-21"
     },
     {
       "repo": "keploy/writers-program",
       "number": 44,
       "title": "Mobile layout collision in the header and services list",
       "diff": "+232 \u0026minus;16",
-      "merged": "2025-12-03"
+      "state": "merged",
+      "date": "2025-12-03"
     }
   ]
 }

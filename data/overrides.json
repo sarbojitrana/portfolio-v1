@@ -158,5 +158,6 @@
   },
   "never_prs": [
     "firstcontributions/first-contributions"
-  ]
+  ],
+  "limit": 8
 }

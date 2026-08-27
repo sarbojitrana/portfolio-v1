@@ -138,11 +138,13 @@ type Preview struct {
 }
 
 type OpenSource struct {
-	MergedTotal   int  `json:"merged_total"`
-	UpstreamRepos int  `json:"upstream_repos"`
-	OwnRepoPRs    int  `json:"own_repo_prs"`
-	PageSize      int  `json:"page_size"`
-	PRs           []PR `json:"prs"`
+	OpenedTotal   int    `json:"opened_total"`
+	MergedTotal   int    `json:"merged_total"`
+	UpstreamRepos int    `json:"upstream_repos"`
+	OwnRepoPRs    int    `json:"own_repo_prs"`
+	PageSize      int    `json:"page_size"`
+	DefaultState  string `json:"default_state"`
+	PRs           []PR   `json:"prs"`
 }
 
 type PR struct {
@@ -150,7 +152,8 @@ type PR struct {
 	Number int    `json:"number"`
 	Title  string `json:"title"`
 	Diff   string `json:"diff"`
-	Merged string `json:"merged"`
+	State  string `json:"state"`
+	Date   string `json:"date"`
 }
 
 type Coding struct {
@@ -196,6 +199,7 @@ type Overrides struct {
 	Always   []string                 `json:"always"`
 	Never    []string                 `json:"never"`
 	NeverPRs []string                 `json:"never_prs"`
+	Limit    int                      `json:"limit"`
 	Wide     []string                 `json:"wide"`
 	Order    []string                 `json:"order"`
 	Merge    map[string]string        `json:"merge"`

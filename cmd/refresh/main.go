@@ -107,23 +107,27 @@ func (r *runner) coding(cf, lc string) error {
 }
 
 func (r *runner) opensource() error {
-	prs, total, err := r.gh.MergedPRs()
+	prs, total, err := r.gh.PullRequests()
 	if err != nil {
 		return err
 	}
-	out := model.OpenSource{MergedTotal: total, PageSize: 5, OwnRepoPRs: total - len(prs)}
+	out := model.OpenSource{OpenedTotal: total, PageSize: 5, DefaultState: "merged", OwnRepoPRs: total - len(prs)}
 	repos := map[string]bool{}
 	for _, p := range prs {
 		if slices.Contains(r.overrides.NeverPRs, p.Repo) {
 			continue
 		}
 		repos[p.Repo] = true
+		if p.State == "merged" {
+			out.MergedTotal++
+		}
 		out.PRs = append(out.PRs, model.PR{
 			Repo:   p.Repo,
 			Number: p.Number,
 			Title:  cleanTitle(p.Title),
 			Diff:   fmt.Sprintf("+%d &minus;%d", p.Additions, p.Deletions),
-			Merged: p.MergedAt.Format("2006-01-02"),
+			State:  p.State,
+			Date:   p.At.Format("2006-01-02"),
 		})
 	}
 	out.UpstreamRepos = len(repos)
@@ -131,7 +135,12 @@ func (r *runner) opensource() error {
 	var existing model.OpenSource
 	if b, err := os.ReadFile(r.path("opensource.json")); err == nil {
 		_ = json.Unmarshal(b, &existing)
-		out.PageSize = existing.PageSize
+		if existing.PageSize > 0 {
+			out.PageSize = existing.PageSize
+		}
+		if existing.DefaultState != "" {
+			out.DefaultState = existing.DefaultState
+		}
 		titles := map[string]string{}
 		for _, p := range existing.PRs {
 			titles[fmt.Sprintf("%s#%d", p.Repo, p.Number)] = p.Title
@@ -241,6 +250,10 @@ func (r *runner) projects(shots, useAI bool) error {
 	slices.SortStableFunc(out.Projects, func(a, b model.Project) int {
 		return rank(order, a.Repo) - rank(order, b.Repo)
 	})
+	if limit := r.overrides.Limit; limit > 0 && len(out.Projects) > limit {
+		byHand += len(out.Projects) - limit
+		out.Projects = out.Projects[:limit]
+	}
 	if err := r.githubBlock(repos); err != nil {
 		return err
 	}
@@ -267,10 +280,17 @@ func (r *runner) githubBlock(repos []ghapi.Repo) error {
 	if err != nil {
 		return err
 	}
-	_, mergedTotal, err := r.gh.MergedPRs()
+	prs, openedTotal, err := r.gh.PullRequests()
 	if err != nil {
 		return err
 	}
+	merged := 0
+	for _, p := range prs {
+		if p.State == "merged" && !slices.Contains(r.overrides.NeverPRs, p.Repo) {
+			merged++
+		}
+	}
+	_ = openedTotal
 
 	authored, forks := 0, 0
 	byLang := map[string]int{}
@@ -315,7 +335,7 @@ func (r *runner) githubBlock(repos []ghapi.Repo) error {
 	p.Github.Stats = []model.Stat{
 		{N: itoa(user.PublicRepos), L: "public repos"},
 		{N: itoa(authored), L: fmt.Sprintf("authored / %d forked", forks)},
-		{N: itoa(mergedTotal), L: "merged pull requests"},
+		{N: itoa(merged), L: "merged pull requests"},
 		{N: itoa(user.Followers), L: "followers"},
 	}
 

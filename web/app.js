@@ -90,24 +90,38 @@
 
   var rowsEl = $("os-rows");
   if (rowsEl) {
-    var PRS = DATA.prs, LIMIT = DATA.prPageSize || 5, offset = 0;
-    var pages = Math.ceil(PRS.length / LIMIT);
+    var ALL = DATA.prs, LIMIT = DATA.prPageSize || 5;
+    var stateEl = $("os-state"), state = DATA.prDefaultState || "merged", offset = 0;
+    if (stateEl) stateEl.value = state;
+
+    var visible = function () {
+      return state === "all" ? ALL : ALL.filter(function (r) { return r.state === state; });
+    };
     var render = function () {
-      rowsEl.innerHTML = PRS.slice(offset, offset + LIMIT).map(function (r) {
-        var url = "https://github.com/" + r.repo + "/pull/" + r.number;
-        return '<tr><td class="repo">' + r.repo + '</td><td class="num">#' + r.number + "</td>" +
-          '<td class="ttl"><a href="' + url + '" target="_blank" rel="noopener">' + r.title + "</a></td>" +
-          '<td class="df">' + r.diff + '</td><td class="dt">' + r.merged + "</td></tr>";
-      }).join("");
-      $("os-read").textContent = "offset " + offset + " · limit " + LIMIT + " · " + PRS.length + " rows";
-      $("os-page").textContent = "page " + (offset / LIMIT + 1) + " / " + pages;
+      var rows = visible();
+      var pages = Math.max(1, Math.ceil(rows.length / LIMIT));
+      if (offset >= rows.length) offset = 0;
+      rowsEl.innerHTML = rows.length === 0
+        ? '<tr class="empty"><td colspan="5">no ' + state + " pull requests</td></tr>"
+        : rows.slice(offset, offset + LIMIT).map(function (r) {
+            var url = "https://github.com/" + r.repo + "/pull/" + r.number;
+            return '<tr><td class="repo">' + r.repo + '</td>' +
+              '<td class="num">#' + r.number + '<span class="state" data-s="' + r.state + '">' + r.state + "</span></td>" +
+              '<td class="ttl"><a href="' + url + '" target="_blank" rel="noopener">' + r.title + "</a></td>" +
+              '<td class="df">' + r.diff + '</td><td class="dt">' + r.date + "</td></tr>";
+          }).join("");
+      $("os-read").textContent = "offset " + offset + " · limit " + LIMIT + " · " + rows.length + " rows";
+      $("os-page").textContent = "page " + (rows.length === 0 ? 0 : offset / LIMIT + 1) + " / " + pages;
       $("os-prev").disabled = offset === 0;
-      $("os-next").disabled = offset + LIMIT >= PRS.length;
+      $("os-next").disabled = offset + LIMIT >= rows.length;
     };
     $("os-prev").addEventListener("click", function () { offset = Math.max(0, offset - LIMIT); render(); });
     $("os-next").addEventListener("click", function () {
-      if (offset + LIMIT < PRS.length) { offset += LIMIT; render(); }
+      if (offset + LIMIT < visible().length) { offset += LIMIT; render(); }
     });
+    if (stateEl) {
+      stateEl.addEventListener("change", function () { state = stateEl.value; offset = 0; render(); });
+    }
     render();
   }
 

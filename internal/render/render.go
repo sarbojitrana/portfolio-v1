@@ -178,24 +178,26 @@ func (s Site) pageData(p Page) ([]byte, error) {
 		Histogram []json.RawMessage `json:"histogram"`
 	}
 	payload := struct {
-		Codeforces    platform            `json:"codeforces"`
-		Leetcode      platform            `json:"leetcode"`
-		Languages     []json.RawMessage   `json:"languages"`
-		Contributions model.Contributions `json:"contributions"`
-		PRs           []model.PR          `json:"prs"`
-		PRPageSize    int                 `json:"prPageSize"`
-		RequestPath   struct {
+		Codeforces     platform            `json:"codeforces"`
+		Leetcode       platform            `json:"leetcode"`
+		Languages      []json.RawMessage   `json:"languages"`
+		Contributions  model.Contributions `json:"contributions"`
+		PRs            []model.PR          `json:"prs"`
+		PRPageSize     int                 `json:"prPageSize"`
+		PRDefaultState string              `json:"prDefaultState"`
+		RequestPath    struct {
 			Capacity   int `json:"capacity"`
 			RefillMs   int `json:"refillMs"`
 			CacheTTLMs int `json:"cacheTtlMs"`
 		} `json:"requestPath"`
 	}{
-		Codeforces:    platform{p.Coding.Codeforces.Ratings, p.Coding.Codeforces.Bands, p.Coding.Codeforces.Histogram},
-		Leetcode:      platform{p.Coding.Leetcode.Ratings, p.Coding.Leetcode.Bands, p.Coding.Leetcode.Histogram},
-		Languages:     p.Profile.Github.Languages,
-		Contributions: p.Contributions,
-		PRs:           p.OpenSource.PRs,
-		PRPageSize:    p.OpenSource.PageSize,
+		Codeforces:     platform{p.Coding.Codeforces.Ratings, p.Coding.Codeforces.Bands, p.Coding.Codeforces.Histogram},
+		Leetcode:       platform{p.Coding.Leetcode.Ratings, p.Coding.Leetcode.Bands, p.Coding.Leetcode.Histogram},
+		Languages:      p.Profile.Github.Languages,
+		Contributions:  p.Contributions,
+		PRs:            p.OpenSource.PRs,
+		PRPageSize:     p.OpenSource.PageSize,
+		PRDefaultState: p.OpenSource.DefaultState,
 	}
 	payload.RequestPath.Capacity = p.Profile.RequestPath.Capacity
 	payload.RequestPath.RefillMs = p.Profile.RequestPath.RefillMs

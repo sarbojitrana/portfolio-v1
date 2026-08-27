@@ -130,22 +130,33 @@
   </div>
   <hr class="dash">
   <div class="sbody">
-    <p class="prose" style="margin-bottom:14px"><span style="display:block;max-width:62ch;font-variation-settings:'wdth' 96,'wght' 420">Bug fixes in other people's codebases, taken through review to merge. Every row below is a merged PR in a repository I don't own — pulled from the GitHub API, not typed by hand.</span></p>
+    <p class="prose" style="margin-bottom:14px"><span style="display:block;max-width:64ch;font-variation-settings:'wdth' 96,'wght' 420">Bug fixes in other people's codebases, taken through review. Every row is a pull request I opened in a repository I don't own — merged, still open, or closed without landing. All of it comes from the GitHub API, none of it is typed by hand.</span></p>
     <div class="scroll">
       <table class="ledger">
-        <thead><tr><th>Repository</th><th>PR</th><th>What it fixed</th><th style="text-align:right">Diff</th><th style="text-align:right">Merged</th></tr></thead>
+        <thead><tr><th>Repository</th><th>PR</th><th>What it fixed</th><th style="text-align:right">Diff</th><th style="text-align:right">Date</th></tr></thead>
         <tbody id="os-rows"></tbody>
       </table>
     </div>
     <div class="pager">
-      <span class="read" id="os-read">offset 0 · limit {{.OpenSource.PageSize}} · {{len .OpenSource.PRs}} rows</span>
+      <span class="filter">
+        <label class="read" for="os-state">state</label>
+        <span class="selwrap">
+          <select class="pg" id="os-state">
+            <option value="merged">merged</option>
+            <option value="open">open</option>
+            <option value="closed">closed</option>
+            <option value="all">all</option>
+          </select><i aria-hidden="true">▾</i>
+        </span>
+      </span>
+      <span class="read" id="os-read">offset 0 · limit {{.OpenSource.PageSize}} · {{.OpenSource.MergedTotal}} rows</span>
       <span class="read" id="os-page">page 1 / {{.Pages}}</span>
       <span class="pgbtns">
         <button class="pg" id="os-prev" type="button">&larr; prev</button>
         <button class="pg" id="os-next" type="button">next &rarr;</button>
       </span>
     </div>
-    <p class="lbl" style="margin-top:14px">{{len .OpenSource.PRs}} upstream · {{.OpenSource.MergedTotal}} merged in total · {{.OpenSource.OwnRepoPRs}} in repositories of my own</p>
+    <p class="lbl" style="margin-top:14px">{{len .OpenSource.PRs}} upstream pull requests · {{.OpenSource.MergedTotal}} merged · {{.OpenSource.OwnRepoPRs}} more in repositories of my own</p>
   </div>
 </section>
 

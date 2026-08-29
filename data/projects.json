@@ -1,14 +1,14 @@
 {
   "scanned": 51,
   "published": 8,
-  "refreshed": "2026-08-27",
+  "refreshed": "2026-08-29",
   "held": [
     {
       "count": "21",
       "text": "Forks — routed to the open-source ledger instead"
     },
     {
-      "count": "11",
+      "count": "3",
       "text": "Notes, coursework, solution archives, tutorial builds and scaffolding"
     },
     {

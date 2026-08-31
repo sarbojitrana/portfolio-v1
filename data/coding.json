@@ -135,7 +135,7 @@
     "top_percent": 5.89,
     "global_rank": 50506,
     "contests": 67,
-    "solved": 657,
+    "solved": 658,
     "acceptance": 69.9,
     "first": "Jun 2024",
     "last": "Aug 2026",
@@ -221,7 +221,7 @@
     "histogram": [
       [
         "easy",
-        192
+        193
       ],
       [
         "medium",

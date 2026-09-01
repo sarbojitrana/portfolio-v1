@@ -1,18 +1,18 @@
 {
-  "scanned": 51,
+  "scanned": 52,
   "published": 8,
-  "refreshed": "2026-08-27",
+  "refreshed": "2026-09-01",
   "held": [
     {
       "count": "21",
       "text": "Forks — routed to the open-source ledger instead"
     },
     {
-      "count": "11",
+      "count": "0",
       "text": "Notes, coursework, solution archives, tutorial builds and scaffolding"
     },
     {
-      "count": "11",
+      "count": "10",
       "text": "Set aside by hand in overrides.json, or folded into another card"
     }
   ],

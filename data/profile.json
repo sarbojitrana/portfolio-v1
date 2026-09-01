@@ -139,19 +139,19 @@
     "member_since": "member since jun 2024",
     "stats": [
       {
-        "n": "51",
+        "n": "52",
         "l": "public repos"
       },
       {
-        "n": "30",
+        "n": "31",
         "l": "authored / 21 forked"
       },
       {
-        "n": "18",
+        "n": "17",
         "l": "merged pull requests"
       },
       {
-        "n": "15",
+        "n": "17",
         "l": "followers"
       }
     ],
@@ -165,11 +165,11 @@
         4
       ],
       [
-        "C++",
-        3
+        "Python",
+        4
       ],
       [
-        "Python",
+        "C++",
         3
       ],
       [
@@ -185,7 +185,7 @@
         2
       ]
     ],
-    "authored_with_language": 26,
+    "authored_with_language": 27,
     "prose": [
       "Go is where the load-bearing work goes. The JavaScript and TypeScript are clients for Go services, the Python and C++ are tools and coursework, and the Bash is glue that earned its place.",
       "The forks aren't clutter — each one is a working copy of an upstream project I've sent a fix to. They feed \u003ca href=\"#s04\" style=\"text-decoration:none;border-bottom:1px solid var(--rule)\"\u003esection 04\u003c/a\u003e rather than the project shelf."
@@ -238,7 +238,7 @@
     "meta": "pdf · 1 page",
     "raw": "https://raw.githubusercontent.com/sarbojitrana/portfolio-v1/main/assets/resume.pdf",
     "blob": "https://github.com/sarbojitrana/portfolio-v1/blob/main/assets/resume.pdf",
-    "note": "Served straight out of the repo. The button hands over whatever <span class=\"mono\">assets/resume.pdf</span> is on <span class=\"mono\">main</span> at the moment you click it — replace that file in <span class=\"mono\">github.com/sarbojitrana/portfolio-v1</span> and everyone downloading from here gets the new one. No re-deploy, no stale copy sitting in a bucket."
+    "note": "Served straight out of the repo. The button hands over whatever \u003cspan class=\"mono\"\u003eassets/resume.pdf\u003c/span\u003e is on \u003cspan class=\"mono\"\u003emain\u003c/span\u003e at the moment you click it — replace that file in \u003cspan class=\"mono\"\u003egithub.com/sarbojitrana/portfolio-v1\u003c/span\u003e and everyone downloading from here gets the new one. No re-deploy, no stale copy sitting in a bucket."
   },
   "pipeline": {
     "intro": "Nothing in section 03 is hand-maintained. A scheduled job reads every public repository, decides which ones are actually projects, writes the description you just read, and captures the preview from the live deployment. Push a new repo with a README and it appears here on the next run; push notes or a solutions dump and it never does.",

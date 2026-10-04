@@ -1,18 +1,18 @@
 {
-  "scanned": 51,
+  "scanned": 49,
   "published": 8,
-  "refreshed": "2026-08-27",
+  "refreshed": "2026-10-04",
   "held": [
     {
-      "count": "21",
+      "count": "18",
       "text": "Forks — routed to the open-source ledger instead"
     },
     {
-      "count": "11",
+      "count": "2",
       "text": "Notes, coursework, solution archives, tutorial builds and scaffolding"
     },
     {
-      "count": "11",
+      "count": "10",
       "text": "Set aside by hand in overrides.json, or folded into another card"
     }
   ],
@@ -149,12 +149,14 @@
       "name": "arcshot",
       "kind": "TOOL",
       "wide": false,
-      "blurb": "A screenshot and screen-recording chooser for Hyprland and other wlroots compositors — the GNOME capture flow on Wayland, without GNOME. The screen is live the moment it opens, so you can drag a region before deciding anything; the toolbar stays clickable over the live screen, recordings keep an elapsed timer, and it remembers your last choice so the common case is press-key, press-Enter.",
+      "blurb": "Arcshot provides an interactive screenshot and screen-recording overlay for Hyprland and wlroots compositors. It renders a custom GTK 4 layer-shell surface rather than delegating to slurp, allowing the toolbar and selection area to accept input simultaneously. To keep overlay controls out of output images without triggering compositor fade animations, the surface clears its canvas and confirms a frame advance before capturing with grim.",
       "facts": [
         "PYTHON",
-        "GTK4 / LIBADWAITA",
-        "WAYLAND",
-        "GRIM · SLURP · WF-RECORDER"
+        "GTK 4 AND LIBADWAITA",
+        "GTK4-LAYER-SHELL",
+        "GRIM AND WF-RECORDER",
+        "PIPEWIRE SINK ROUTING",
+        "HYPRLAND AND WLROOTS"
       ],
       "links": [
         {

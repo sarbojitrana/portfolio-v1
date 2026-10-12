@@ -132,11 +132,11 @@
     "peak_date": "Feb 2026",
     "current": 1863,
     "badge": "Knight",
-    "top_percent": 5.89,
-    "global_rank": 50506,
+    "top_percent": 5.96,
+    "global_rank": 51613,
     "contests": 67,
-    "solved": 657,
-    "acceptance": 69.9,
+    "solved": 661,
+    "acceptance": 70,
     "first": "Jun 2024",
     "last": "Aug 2026",
     "ratings": [
@@ -221,11 +221,11 @@
     "histogram": [
       [
         "easy",
-        192
+        193
       ],
       [
         "medium",
-        366
+        369
       ],
       [
         "hard",

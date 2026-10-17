@@ -1,18 +1,18 @@
 {
-  "scanned": 51,
+  "scanned": 49,
   "published": 8,
-  "refreshed": "2026-08-27",
+  "refreshed": "2026-10-17",
   "held": [
     {
-      "count": "21",
+      "count": "18",
       "text": "Forks — routed to the open-source ledger instead"
     },
     {
-      "count": "11",
+      "count": "8",
       "text": "Notes, coursework, solution archives, tutorial builds and scaffolding"
     },
     {
-      "count": "11",
+      "count": "15",
       "text": "Set aside by hand in overrides.json, or folded into another card"
     }
   ],
@@ -149,12 +149,13 @@
       "name": "arcshot",
       "kind": "TOOL",
       "wide": false,
-      "blurb": "A screenshot and screen-recording chooser for Hyprland and other wlroots compositors — the GNOME capture flow on Wayland, without GNOME. The screen is live the moment it opens, so you can drag a region before deciding anything; the toolbar stays clickable over the live screen, recordings keep an elapsed timer, and it remembers your last choice so the common case is press-key, press-Enter.",
+      "blurb": "Arcshot is a screenshot and screen-recording overlay for Hyprland and wlroots compositors. Instead of shelling out to slurp, it renders a custom selection on a gtk4-layer-shell canvas so the capture toolbar stays interactive while armed. It routes microphone and desktop audio into an isolated null sink so inputs can be toggled mid-recording, and stitches paused segments together using ffmpeg.",
       "facts": [
-        "PYTHON",
-        "GTK4 / LIBADWAITA",
-        "WAYLAND",
-        "GRIM · SLURP · WF-RECORDER"
+        "PYTHON WITH GTK4 AND LIBADWAITA",
+        "GTK4-LAYER-SHELL WAYLAND OVERLAY",
+        "GRIM AND WF-RECORDER INTEGRATION",
+        "PIPEWIRE AND PULSEAUDIO NULL SINKS",
+        "FFMPEG CONCATENATION FOR PAUSES"
       ],
       "links": [
         {

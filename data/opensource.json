@@ -7,6 +7,14 @@
   "default_state": "merged",
   "prs": [
     {
+      "repo": "mattermost/mattermost",
+      "number": 37671,
+      "title": "Render emoji picker with individual PNGs instead of the sprite sheet",
+      "diff": "+114 \u0026minus;134",
+      "state": "closed",
+      "date": "2026-09-01"
+    },
+    {
       "repo": "infiniflow/ragflow",
       "number": 18244,
       "title": "Cross-KB document id collision in data source sync",
@@ -157,14 +165,6 @@
       "diff": "+9 \u0026minus;0",
       "state": "open",
       "date": "2026-07-27"
-    },
-    {
-      "repo": "mattermost/mattermost",
-      "number": 37671,
-      "title": "Render emoji picker with individual PNGs instead of the sprite sheet",
-      "diff": "+114 \u0026minus;134",
-      "state": "open",
-      "date": "2026-07-26"
     },
     {
       "repo": "tusharg2210/asset-flow",

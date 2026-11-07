@@ -1,11 +1,27 @@
 {
   "opened_total": 34,
-  "merged_total": 17,
+  "merged_total": 18,
   "upstream_repos": 14,
   "own_repo_prs": 5,
   "page_size": 5,
   "default_state": "merged",
   "prs": [
+    {
+      "repo": "hiero-ledger/hiero-sdk-js",
+      "number": 4316,
+      "title": "Add unit tests for TokenRelationship",
+      "diff": "+385 \u0026minus;0",
+      "state": "merged",
+      "date": "2026-11-02"
+    },
+    {
+      "repo": "mattermost/mattermost",
+      "number": 37671,
+      "title": "Render emoji picker with individual PNGs instead of the sprite sheet",
+      "diff": "+114 \u0026minus;134",
+      "state": "closed",
+      "date": "2026-09-01"
+    },
     {
       "repo": "infiniflow/ragflow",
       "number": 18244,
@@ -103,14 +119,6 @@
       "date": "2026-08-13"
     },
     {
-      "repo": "hiero-ledger/hiero-sdk-js",
-      "number": 4316,
-      "title": "Add unit tests for TokenRelationship",
-      "diff": "+385 \u0026minus;0",
-      "state": "closed",
-      "date": "2026-08-12"
-    },
-    {
       "repo": "cloudflare/cloudflare-os",
       "number": 60,
       "title": "Report malformed percent-escapes in Google resource URLs instead of throwing URIError",
@@ -157,14 +165,6 @@
       "diff": "+9 \u0026minus;0",
       "state": "open",
       "date": "2026-07-27"
-    },
-    {
-      "repo": "mattermost/mattermost",
-      "number": 37671,
-      "title": "Render emoji picker with individual PNGs instead of the sprite sheet",
-      "diff": "+114 \u0026minus;134",
-      "state": "open",
-      "date": "2026-07-26"
     },
     {
       "repo": "tusharg2210/asset-flow",
